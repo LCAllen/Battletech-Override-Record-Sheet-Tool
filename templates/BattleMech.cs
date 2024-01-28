@@ -1,4 +1,4 @@
-﻿internal class BattleMech
+﻿public class BattleMech
 {
 	public string chassis = "";
 	public string variant = "";
@@ -12,7 +12,7 @@
     public string armorType = "";
 	public int armorLA = 0;
     public int armorRA = 0;
-    public int armorHead = 0;
+    public int armorHD = 0;
 	public int armorLT = 0;
     public int armorCT = 0;
     public int armorRT = 0;
@@ -41,7 +41,7 @@
         Console.Out.WriteLine(jump);
         Console.Out.WriteLine(armorLA);
         Console.Out.WriteLine(armorRA);
-        Console.Out.WriteLine(armorHead);
+        Console.Out.WriteLine(armorHD);
         Console.Out.WriteLine(armorLT);
         Console.Out.WriteLine(armorCT);
         Console.Out.WriteLine(armorRT);

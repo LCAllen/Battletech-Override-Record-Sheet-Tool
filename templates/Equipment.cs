@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-internal abstract class Equipment
+public abstract class Equipment
 {
     protected string displayName = "";
     protected string mtsName = "";

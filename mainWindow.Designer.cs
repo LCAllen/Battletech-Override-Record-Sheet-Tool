@@ -112,6 +112,7 @@
             textBoxMTF.TabIndex = 3;
             textBoxMTF.Text = "Browse for MegaMek MTF";
             textBoxMTF.TextAlign = HorizontalAlignment.Center;
+            textBoxMTF.TextChanged += textBoxMTF_TextChanged;
             // 
             // buttonLoad
             // 
@@ -208,6 +209,7 @@
             checkBoxDouble.TabIndex = 15;
             checkBoxDouble.Text = "Double";
             checkBoxDouble.UseVisualStyleBackColor = true;
+            checkBoxDouble.CheckedChanged += checkBoxDouble_CheckedChanged;
             // 
             // labelWalk
             // 

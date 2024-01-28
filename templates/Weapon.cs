@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Transactions;
 
-internal abstract class Weapon
+public abstract class Weapon
 {
     protected string displayName = "";
     protected string damage = "";

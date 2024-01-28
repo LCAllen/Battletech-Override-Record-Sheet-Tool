@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Shapes;
@@ -62,7 +63,7 @@ namespace BORST
                         if (line.ToLower().StartsWith("ct armor:"))
                             battleMech.armorCT = int.Parse(line.Split(':')[1]);
                         if (line.ToLower().StartsWith("hd armor:"))
-                            battleMech.armorHead = int.Parse(line.Split(':')[1]);
+                            battleMech.armorHD = int.Parse(line.Split(':')[1]);
                         if (line.ToLower().StartsWith("ll armor:"))
                             battleMech.armorLL = int.Parse(line.Split(':')[1]);
                         if (line.ToLower().StartsWith("rl armor:"))
@@ -400,13 +401,6 @@ namespace BORST
                         break;
                 }
             }
-        }
-
-        public static BattleMech BuildBattleMechFromGUI()
-        {
-            BattleMech battleMech = new BattleMech();
-            
-                return battleMech;
         }
 
         public static BattleMech BuildTestBattleMech()
