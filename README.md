@@ -7,5 +7,5 @@ TODO - Clean up and comment code.
 
 
 Credits:
-Programming - Levi Cherry-Allen
-Programming - Andrew Jolley
+Levi Cherry-Allen
+Andrew Jolley
