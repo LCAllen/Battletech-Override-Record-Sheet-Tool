@@ -18,48 +18,7 @@ internal abstract class Equipment
             + this.subtype
             + this.location.ToUpper());
     }
-    /*        public static string[] getEquipmentStrings()
-        {
-            string[] strings = {
-            "Ammo", 
-            "CASE",
-            "AntiPersonnelPod", 
-            "Probe",
-            "ECM",
-            "C3",
-            "Narc",
-            "AntiMissileSystem",
-            "MASC",
-            "TSM",
-            "ElectronicWarfareEquipment",
-            "TAG",
-            "AES",
-            "PPC Capacitor",
-            "Supercharger",
-            "UMU",
-            "Targeting Computer"
-            };
-            return strings;
-        }
-        public static string[] getUnneededStrings() 
-        {
-            string[] strings = {
-                "/",
-                "IS ",
-                "IS",
-                "Clan",
-                "CL",
-                "(OMNIPOD)",
-                "(omnipod)",
-                "- full",
-                "- Full",
-                "- half",
-                "- Half",
-            };
-            return strings;
-        }*/
 }
-// BELOW UNUSED
 internal class Ammo : Equipment
 {
     internal Ammo(string loc, string subtype)

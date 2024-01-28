@@ -24,13 +24,11 @@
 
     public List<Weapon> weapons;
     public List<Equipment> equip;
-    // public List<Equipment> equip;
 
     internal BattleMech()
 	{
         this.weapons = new List<Weapon>();
         this.equip = new List<Equipment>();
-        // weapon.Add(new MG("la"));
     }
 
 	internal void printBattleMech()
