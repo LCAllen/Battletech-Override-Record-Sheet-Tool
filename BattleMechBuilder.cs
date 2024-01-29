@@ -28,6 +28,9 @@ namespace BORST
                             battleMech.chassis = line.Split(':')[1];
                         if (line.ToLower().StartsWith("model:"))
                             battleMech.variant = line.Split(':')[1];
+                        if (line.ToLower().StartsWith("config:"))
+                            if (line.Split(':')[1].ToLower().Contains("omni"))
+                                battleMech.omnimech = true;
                         if (line.ToLower().StartsWith("techbase:"))
                             battleMech.techBase = line.Split(':')[1];
                         if (line.ToLower().StartsWith("mass:"))

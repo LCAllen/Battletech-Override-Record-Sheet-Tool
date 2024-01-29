@@ -24,6 +24,8 @@
 
     public List<Weapon> weapons;
     public List<Equipment> equip;
+    public string weaponsString;
+    public string equipString;
 
     internal BattleMech()
 	{

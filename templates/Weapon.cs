@@ -117,7 +117,7 @@ internal class UAC2 : Weapon
 {
     internal UAC2(string loc)
     {
-        this.displayName = "UAC/2";
+        this.displayName = "UAC/2 (RF)";
         this.damage = "1";
         this.heat = 0;
         this.location = loc;
@@ -134,7 +134,7 @@ internal class UAC5 : Weapon
 {
     internal UAC5(string loc)
     {
-        this.displayName = "UAC/5";
+        this.displayName = "UAC/5 (RF)";
         this.damage = "2";
         this.heat = 0;
         this.location = loc;
@@ -151,7 +151,7 @@ internal class UAC10 : Weapon
 {
     internal UAC10(string loc)
     {
-        this.displayName = "UAC/10";
+        this.displayName = "UAC/10 (RF)";
         this.damage = "4";
         this.heat = 1;
         this.location = loc;
@@ -168,7 +168,7 @@ internal class UAC20 : Weapon
 {
     internal UAC20(string loc)
     {
-        this.displayName = "UAC/20";
+        this.displayName = "UAC/20 (RF)";
         this.damage = "7";
         this.heat = 1;
         this.location = loc;
