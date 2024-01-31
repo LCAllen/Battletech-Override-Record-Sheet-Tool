@@ -81,6 +81,9 @@
             labelArmorRA = new Label();
             labelArmorRL = new Label();
             labelArmorLL = new Label();
+            buttonRemoveEquipment = new Button();
+            buttonRemoveWeapon = new Button();
+            comboBoxEquipmentSubtype = new ComboBox();
             SuspendLayout();
             // 
             // buttonGenerate
@@ -247,7 +250,7 @@
             // 
             listBoxEquip.FormattingEnabled = true;
             listBoxEquip.ItemHeight = 15;
-            listBoxEquip.Location = new Point(12, 470);
+            listBoxEquip.Location = new Point(12, 499);
             listBoxEquip.Name = "listBoxEquip";
             listBoxEquip.Size = new Size(400, 199);
             listBoxEquip.TabIndex = 20;
@@ -258,7 +261,7 @@
             buttonAddEquip.Name = "buttonAddEquip";
             buttonAddEquip.Size = new Size(104, 23);
             buttonAddEquip.TabIndex = 21;
-            buttonAddEquip.Text = "Add Equipment";
+            buttonAddEquip.Text = "Add";
             buttonAddEquip.UseVisualStyleBackColor = true;
             buttonAddEquip.Click += buttonAddEquip_Click;
             // 
@@ -274,11 +277,11 @@
             // 
             // buttonAddWeapon
             // 
-            buttonAddWeapon.Location = new Point(12, 207);
+            buttonAddWeapon.Location = new Point(12, 178);
             buttonAddWeapon.Name = "buttonAddWeapon";
             buttonAddWeapon.Size = new Size(104, 23);
             buttonAddWeapon.TabIndex = 23;
-            buttonAddWeapon.Text = "Add Weapon";
+            buttonAddWeapon.Text = "Add";
             buttonAddWeapon.UseVisualStyleBackColor = true;
             buttonAddWeapon.Click += buttonAddWeapon_Click;
             // 
@@ -303,7 +306,7 @@
             // comboBoxWeapons
             // 
             comboBoxWeapons.FormattingEnabled = true;
-            comboBoxWeapons.Items.AddRange(new object[] { "MG", "AC/2", "AC/5", "AC/10", "AC/20", "SRM-2", "SRM-4", "SRM-6", "LRM-5", "LRM-10", "LRM-15", "LRM-20", "SLas", "MLas", "LLas", "PPC", "Gauss Rifle", "LB2-X", "LB5-X", "LB10-X", "LB20-X" });
+            comboBoxWeapons.Items.AddRange(new object[] { "MG", "Flamer", "AC/2", "AC/5", "AC/10", "AC/20", "UAC/2", "UAC/5", "UAC/10", "UAC/20", "LB2-X", "LB5-X", "LB10-X", "LB20-X", "SRM-2", "SRM-4", "SRM-6", "Streak SRM-2", "Streak SRM-4", "Streak SRM-6", "LRM-5", "LRM-10", "LRM-15", "LRM-20", "S Las", "M Las", "L Las", "ER S Las", "ER M Las", "ER L Las", "S Pul Las", "M Pul Las", "L Pul Las", "PPC", "ER PPC", "Gauss Rifle" });
             comboBoxWeapons.Location = new Point(122, 208);
             comboBoxWeapons.Name = "comboBoxWeapons";
             comboBoxWeapons.Size = new Size(221, 23);
@@ -313,10 +316,12 @@
             // comboBoxEquipment
             // 
             comboBoxEquipment.FormattingEnabled = true;
-            comboBoxEquipment.Location = new Point(122, 441);
+            comboBoxEquipment.Items.AddRange(new object[] { "Ammo", "CASE", "CASE II", "AMS", "TAG", "NARC", "TSM", "MASC", "Supercharger", "AES", "Partial Wing", "Targeting Computer", "AES", "Partial Wing", "Targeting Computer", "PPC Capacitor", "Electronic Warfare Equipment", "Artemis IV" });
+            comboBoxEquipment.Location = new Point(122, 442);
             comboBoxEquipment.Name = "comboBoxEquipment";
             comboBoxEquipment.Size = new Size(221, 23);
             comboBoxEquipment.TabIndex = 27;
+            comboBoxEquipment.SelectedIndexChanged += comboBoxEquipment_SelectedIndexChanged;
             // 
             // comboBoxWeaponLoc
             // 
@@ -331,10 +336,11 @@
             // 
             comboBoxEquipLoc.FormattingEnabled = true;
             comboBoxEquipLoc.Items.AddRange(new object[] { "LA", "RA", "T", "HD", "LL", "RL" });
-            comboBoxEquipLoc.Location = new Point(349, 441);
+            comboBoxEquipLoc.Location = new Point(349, 442);
             comboBoxEquipLoc.Name = "comboBoxEquipLoc";
             comboBoxEquipLoc.Size = new Size(63, 23);
             comboBoxEquipLoc.TabIndex = 29;
+            comboBoxEquipLoc.SelectedIndexChanged += comboBoxEquipLoc_SelectedIndexChanged;
             // 
             // labelTechBase
             // 
@@ -537,11 +543,40 @@
             labelArmorLL.TabIndex = 54;
             labelArmorLL.Text = "LL";
             // 
+            // buttonRemoveEquipment
+            // 
+            buttonRemoveEquipment.Location = new Point(12, 470);
+            buttonRemoveEquipment.Name = "buttonRemoveEquipment";
+            buttonRemoveEquipment.Size = new Size(104, 23);
+            buttonRemoveEquipment.TabIndex = 55;
+            buttonRemoveEquipment.Text = "Remove";
+            buttonRemoveEquipment.UseVisualStyleBackColor = true;
+            // 
+            // buttonRemoveWeapon
+            // 
+            buttonRemoveWeapon.Location = new Point(12, 208);
+            buttonRemoveWeapon.Name = "buttonRemoveWeapon";
+            buttonRemoveWeapon.Size = new Size(104, 23);
+            buttonRemoveWeapon.TabIndex = 56;
+            buttonRemoveWeapon.Text = "Remove";
+            buttonRemoveWeapon.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxEquipmentSubtype
+            // 
+            comboBoxEquipmentSubtype.FormattingEnabled = true;
+            comboBoxEquipmentSubtype.Location = new Point(122, 471);
+            comboBoxEquipmentSubtype.Name = "comboBoxEquipmentSubtype";
+            comboBoxEquipmentSubtype.Size = new Size(221, 23);
+            comboBoxEquipmentSubtype.TabIndex = 57;
+            // 
             // mainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1060, 710);
+            Controls.Add(comboBoxEquipmentSubtype);
+            Controls.Add(buttonRemoveWeapon);
+            Controls.Add(buttonRemoveEquipment);
             Controls.Add(labelArmorLL);
             Controls.Add(labelArmorRL);
             Controls.Add(labelArmorRA);
@@ -658,5 +693,8 @@
         private Label labelArmorRA;
         private Label labelArmorRL;
         private Label labelArmorLL;
+        private Button buttonRemoveEquipment;
+        private Button buttonRemoveWeapon;
+        private ComboBox comboBoxEquipmentSubtype;
     }
 }

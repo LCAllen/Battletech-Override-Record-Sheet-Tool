@@ -3,6 +3,8 @@ using PdfSharp.Drawing.Layout;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
+using System.Reflection;
 
 namespace BORST
 {
@@ -245,6 +247,9 @@ namespace BORST
               XStringFormats.TopLeft);
 
             document.Save(filename);
+            document.Close();
+
+            gfx.Dispose();
         }
 
         private void buttonBrowseMTF_Click(object sender, EventArgs e)
@@ -374,6 +379,75 @@ namespace BORST
         private void textBoxMTF_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBoxEquipLoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxEquipment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(comboBoxEquipment.Text)
+            {
+                case "Ammo":
+                    List<string> ammoList = new List<string> { 
+                        "LRM - 5", 
+                        "LRM - 10", 
+                        "LRM - 15", 
+                        "LRM - 20", 
+                        "SRM - 2", 
+                        "SRM - 4", 
+                        "SRM - 6", 
+                        "AC/2", 
+                        "AC/5", 
+                        "AC/10", 
+                        "AC/20", 
+                        "LB2-X AC",
+                        "LB5-X AC",
+                        "LB10-X AC",
+                        "UAC/2",
+                        "UAC/5",
+                        "UAC/10",
+                        "UAC/20",
+                        "Gauss",
+                        "AMS",
+                        "Arrow IV",
+                        "Arrow IV - Homing",
+                        "Arrow IV - Cluster"
+                    };
+                    comboBoxEquipmentSubtype.Items.Clear();
+                    foreach (string ammo in ammoList)
+                    {
+                        comboBoxEquipmentSubtype.Items.Add(ammo);
+                    }
+                    break;
+                case "CASE": comboBoxEquipmentSubtype.Items.Clear(); break;
+
+                case "CASE II": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "AMS": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "TAG": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "NARC": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "TSM": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "MASC": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "Supercharger": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "AES": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "Partial Wing": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "Targeting Computer": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "Electronic Warfare Equipment":
+                    List<string> ECMList = new List<string> {
+                        "Guardian",
+                        "Angel"
+                    };
+                    comboBoxEquipmentSubtype.Items.Clear(); 
+                    foreach (string ecm in ECMList)
+                    {
+                        comboBoxEquipmentSubtype.Items.Add(ecm);
+                    }
+                    break;
+                case "PPC Capacitor": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "Artemis IV": comboBoxEquipmentSubtype.Items.Clear(); break;
+            }
         }
     }
 }

@@ -19,11 +19,11 @@ public abstract class Weapon
         return (this.displayName.PadRight(10)
             + (this.damage + '/' + this.heat).PadRight(10, ' ')
             + this.location.ToUpper().PadRight(10)
-            + this.pointBlankRange
-            + '/' + this.shortRange
-            + '/' + this.mediumRange
-            + '/' + this.longRange
-            + '/' + this.extraLongRange);
+            + this.pointBlankRange.PadLeft(2)
+            + ' ' + this.shortRange.PadLeft(2)
+            + ' ' + this.mediumRange.PadLeft(2)
+            + ' ' + this.longRange.PadLeft(2)
+            + ' ' + this.extraLongRange.PadLeft(2));
     }
 }
 
@@ -1037,9 +1037,9 @@ internal class cerPPC : Weapon
         this.damage = "5";
         this.heat = 3;
         this.location = loc;
-        this.pointBlankRange = "0";
-        this.shortRange = "0";
-        this.mediumRange = "0";
+        this.pointBlankRange = "+0";
+        this.shortRange = "+0";
+        this.mediumRange = "+0";
         this.longRange = "+2";
         this.extraLongRange = "+4";
     }

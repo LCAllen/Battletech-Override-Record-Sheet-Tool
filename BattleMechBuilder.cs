@@ -145,16 +145,16 @@ namespace BORST
                                 sub = "AC/20";
                                 break;
                             case string subtype when subtype.Contains("lb 2-x ac"):
-                                sub = "LB 2-X AC";
+                                sub = "LB2-X AC";
                                 break;
                             case string subtype when subtype.Contains("lb 5-x ac"):
-                                sub = "LB 5-X AC";
+                                sub = "LB5-X AC";
                                 break;
                             case string subtype when subtype.Contains("lb 10-x ac"):
-                                sub = "LB 10-X AC";
+                                sub = "LB10-X AC";
                                 break;
                             case string subtype when subtype.Contains("lb 20-x ac"):
-                                sub = "LB 10-X AC";
+                                sub = "LB20-X AC";
                                 break;
                             case string subtype when subtype.Contains("ultra ac/2"):
                                 sub = "UAC/2";
