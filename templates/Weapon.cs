@@ -17,8 +17,8 @@ public abstract class Weapon
     public override string ToString()
     {
         return (this.displayName.PadRight(12)
-            + (this.damage + '/' + this.heat).PadRight(8, ' ')
-            + this.location.ToUpper().PadRight(10)
+            + (this.damage + '/' + this.heat).PadRight(10, ' ')
+            + this.location.ToUpper().PadRight(8)
             + this.pointBlankRange.PadLeft(2)
             + ' ' + this.shortRange.PadLeft(2)
             + ' ' + this.mediumRange.PadLeft(2)
