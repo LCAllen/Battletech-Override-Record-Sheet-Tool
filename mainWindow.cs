@@ -250,7 +250,7 @@ namespace BORST
               XStringFormats.TopLeft);
 
             string punchKick = "";
-            switch(battleMech.mass)
+            switch (battleMech.mass)
             {
                 case 20:
                 case 25:
@@ -378,7 +378,7 @@ namespace BORST
             {
                 listBoxEquip.Items.Add(equip);
             }
-            
+
         }
 
         private void mainWindow_Load(object sender, EventArgs e)
@@ -495,13 +495,13 @@ namespace BORST
                     else listBoxWeapon.Items.Add(new cLRM20(comboBoxWeaponLoc.Text));
                     break;
                 case "S Las":
-                        listBoxWeapon.Items.Add(new SLas(comboBoxWeaponLoc.Text));
+                    listBoxWeapon.Items.Add(new SLas(comboBoxWeaponLoc.Text));
                     break;
                 case "M Las":
-                        listBoxWeapon.Items.Add(new MLas(comboBoxWeaponLoc.Text));
+                    listBoxWeapon.Items.Add(new MLas(comboBoxWeaponLoc.Text));
                     break;
                 case "L Las":
-                        listBoxWeapon.Items.Add(new LLas(comboBoxWeaponLoc.Text));
+                    listBoxWeapon.Items.Add(new LLas(comboBoxWeaponLoc.Text));
                     break;
                 case "ER S Las":
                     if (!checkBoxOmni.Checked)
@@ -534,7 +534,7 @@ namespace BORST
                     else listBoxWeapon.Items.Add(new cLpLas(comboBoxWeaponLoc.Text));
                     break;
                 case "PPC":
-                        listBoxWeapon.Items.Add(new PPC(comboBoxWeaponLoc.Text));
+                    listBoxWeapon.Items.Add(new PPC(comboBoxWeaponLoc.Text));
                     break;
                 case "ER PPC":
                     if (!checkBoxOmni.Checked)
@@ -547,7 +547,7 @@ namespace BORST
                     else listBoxWeapon.Items.Add(new cGauss(comboBoxWeaponLoc.Text));
                     break;
                 case "Arrow IV":
-                        listBoxWeapon.Items.Add(new ArrowIV(comboBoxWeaponLoc.Text));
+                    listBoxWeapon.Items.Add(new ArrowIV(comboBoxWeaponLoc.Text));
                     break;
             }
         }
@@ -584,21 +584,21 @@ namespace BORST
 
         private void comboBoxEquipment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch(comboBoxEquipment.Text)
+            switch (comboBoxEquipment.Text)
             {
                 case "Ammo":
-                    List<string> ammoList = new List<string> { 
-                        "LRM - 5", 
-                        "LRM - 10", 
-                        "LRM - 15", 
-                        "LRM - 20", 
-                        "SRM - 2", 
-                        "SRM - 4", 
-                        "SRM - 6", 
-                        "AC/2", 
-                        "AC/5", 
-                        "AC/10", 
-                        "AC/20", 
+                    List<string> ammoList = new List<string> {
+                        "LRM - 5",
+                        "LRM - 10",
+                        "LRM - 15",
+                        "LRM - 20",
+                        "SRM - 2",
+                        "SRM - 4",
+                        "SRM - 6",
+                        "AC/2",
+                        "AC/5",
+                        "AC/10",
+                        "AC/20",
                         "LB2-X AC",
                         "LB5-X AC",
                         "LB10-X AC",
@@ -635,7 +635,7 @@ namespace BORST
                         "Guardian",
                         "Angel"
                     };
-                    comboBoxEquipmentSubtype.Items.Clear(); 
+                    comboBoxEquipmentSubtype.Items.Clear();
                     foreach (string ecm in ECMList)
                     {
                         comboBoxEquipmentSubtype.Items.Add(ecm);
@@ -644,6 +644,18 @@ namespace BORST
                 case "PPC Capacitor": comboBoxEquipmentSubtype.Items.Clear(); break;
                 case "Artemis IV": comboBoxEquipmentSubtype.Items.Clear(); break;
             }
+        }
+
+        private void buttonRemoveWeapon_Click(object sender, EventArgs e)
+        {
+            foreach (Weapon weapon in listBoxWeapon.SelectedItems.OfType<Weapon>().ToList())
+                listBoxWeapon.Items.Remove(weapon);
+        }
+
+        private void buttonRemoveEquipment_Click(object sender, EventArgs e)
+        {
+            foreach (Equipment equip in listBoxEquip.SelectedItems.OfType<Equipment>().ToList())
+                listBoxEquip.Items.Remove(equip);
         }
     }
 }

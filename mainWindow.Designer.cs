@@ -551,6 +551,7 @@
             buttonRemoveEquipment.TabIndex = 55;
             buttonRemoveEquipment.Text = "Remove";
             buttonRemoveEquipment.UseVisualStyleBackColor = true;
+            buttonRemoveEquipment.Click += buttonRemoveEquipment_Click;
             // 
             // buttonRemoveWeapon
             // 
@@ -560,6 +561,7 @@
             buttonRemoveWeapon.TabIndex = 56;
             buttonRemoveWeapon.Text = "Remove";
             buttonRemoveWeapon.UseVisualStyleBackColor = true;
+            buttonRemoveWeapon.Click += buttonRemoveWeapon_Click;
             // 
             // comboBoxEquipmentSubtype
             // 
