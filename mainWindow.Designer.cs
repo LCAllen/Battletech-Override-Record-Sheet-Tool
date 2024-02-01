@@ -307,7 +307,7 @@
             // 
             comboBoxWeapons.FormattingEnabled = true;
             comboBoxWeapons.Items.AddRange(new object[] { "MG", "Flamer", "AC/2", "AC/5", "AC/10", "AC/20", "UAC/2", "UAC/5", "UAC/10", "UAC/20", "LB2-X", "LB5-X", "LB10-X", "LB20-X", "SRM-2", "SRM-4", "SRM-6", "Streak SRM-2", "Streak SRM-4", "Streak SRM-6", "LRM-5", "LRM-10", "LRM-15", "LRM-20", "S Las", "M Las", "L Las", "ER S Las", "ER M Las", "ER L Las", "S Pul Las", "M Pul Las", "L Pul Las", "PPC", "ER PPC", "Gauss Rifle" });
-            comboBoxWeapons.Location = new Point(122, 208);
+            comboBoxWeapons.Location = new Point(122, 178);
             comboBoxWeapons.Name = "comboBoxWeapons";
             comboBoxWeapons.Size = new Size(221, 23);
             comboBoxWeapons.TabIndex = 26;
@@ -327,7 +327,7 @@
             // 
             comboBoxWeaponLoc.FormattingEnabled = true;
             comboBoxWeaponLoc.Items.AddRange(new object[] { "(LA)", "(RA)", "(T)", "(HD)", "(LL)", "(RL)" });
-            comboBoxWeaponLoc.Location = new Point(349, 208);
+            comboBoxWeaponLoc.Location = new Point(349, 179);
             comboBoxWeaponLoc.Name = "comboBoxWeaponLoc";
             comboBoxWeaponLoc.Size = new Size(63, 23);
             comboBoxWeaponLoc.TabIndex = 28;
@@ -565,6 +565,7 @@
             // 
             // comboBoxEquipmentSubtype
             // 
+            comboBoxEquipmentSubtype.Enabled = false;
             comboBoxEquipmentSubtype.FormattingEnabled = true;
             comboBoxEquipmentSubtype.Location = new Point(122, 471);
             comboBoxEquipmentSubtype.Name = "comboBoxEquipmentSubtype";

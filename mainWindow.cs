@@ -62,7 +62,7 @@ namespace BORST
                   XStringFormats.TopLeft);
             }
 
-            tf.DrawString(battleMech.mass.ToString(), detailFont, XBrushes.Black,
+            tf.DrawString(battleMech.mass.ToString() + " Tons", detailFont, XBrushes.Black,
               new XRect(41, 62, 100, 10),
               XStringFormats.TopLeft);
 
@@ -613,6 +613,7 @@ namespace BORST
                         "Arrow IV - Cluster"
                     };
                     comboBoxEquipmentSubtype.Items.Clear();
+                    comboBoxEquipmentSubtype.Enabled = true;
                     foreach (string ammo in ammoList)
                     {
                         comboBoxEquipmentSubtype.Items.Add(ammo);
@@ -620,29 +621,30 @@ namespace BORST
                     break;
                 case "CASE": comboBoxEquipmentSubtype.Items.Clear(); break;
 
-                case "CASE II": comboBoxEquipmentSubtype.Items.Clear(); break;
-                case "AMS": comboBoxEquipmentSubtype.Items.Clear(); break;
-                case "TAG": comboBoxEquipmentSubtype.Items.Clear(); break;
-                case "NARC": comboBoxEquipmentSubtype.Items.Clear(); break;
-                case "TSM": comboBoxEquipmentSubtype.Items.Clear(); break;
-                case "MASC": comboBoxEquipmentSubtype.Items.Clear(); break;
-                case "Supercharger": comboBoxEquipmentSubtype.Items.Clear(); break;
-                case "AES": comboBoxEquipmentSubtype.Items.Clear(); break;
-                case "Partial Wing": comboBoxEquipmentSubtype.Items.Clear(); break;
-                case "Targeting Computer": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "CASE II": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
+                case "AMS": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
+                case "TAG": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
+                case "NARC": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
+                case "TSM": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
+                case "MASC": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
+                case "Supercharger": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
+                case "AES": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
+                case "Partial Wing": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
+                case "Targeting Computer": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
                 case "Electronic Warfare Equipment":
                     List<string> ECMList = new List<string> {
                         "Guardian",
                         "Angel"
                     };
                     comboBoxEquipmentSubtype.Items.Clear();
+                    comboBoxEquipmentSubtype.Enabled = true;
                     foreach (string ecm in ECMList)
                     {
                         comboBoxEquipmentSubtype.Items.Add(ecm);
                     }
                     break;
-                case "PPC Capacitor": comboBoxEquipmentSubtype.Items.Clear(); break;
-                case "Artemis IV": comboBoxEquipmentSubtype.Items.Clear(); break;
+                case "PPC Capacitor": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
+                case "Artemis IV": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
             }
         }
 
