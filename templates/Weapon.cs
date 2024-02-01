@@ -16,8 +16,8 @@ public abstract class Weapon
 
     public override string ToString()
     {
-        return (this.displayName.PadRight(10)
-            + (this.damage + '/' + this.heat).PadRight(10, ' ')
+        return (this.displayName.PadRight(12)
+            + (this.damage + '/' + this.heat).PadRight(8, ' ')
             + this.location.ToUpper().PadRight(10)
             + this.pointBlankRange.PadLeft(2)
             + ' ' + this.shortRange.PadLeft(2)
@@ -129,7 +129,7 @@ internal class UAC2 : Weapon
     }
 }
 
-// cUAC/5 (RF)	2/0	0/0/0/2/4
+// UAC/5 (RF)	2/0	0/0/0/2/4
 internal class UAC5 : Weapon
 {
     internal UAC5(string loc)
@@ -1038,6 +1038,22 @@ internal class cerPPC : Weapon
         this.heat = 3;
         this.location = loc;
         this.pointBlankRange = "+0";
+        this.shortRange = "+0";
+        this.mediumRange = "+0";
+        this.longRange = "+2";
+        this.extraLongRange = "+4";
+    }
+}
+
+internal class cGauss : Weapon
+{
+    internal cGauss(string loc)
+    {
+        this.displayName = "cGauss";
+        this.damage = "5";
+        this.heat = 0;
+        this.location = loc;
+        this.pointBlankRange = "+2";
         this.shortRange = "+0";
         this.mediumRange = "+0";
         this.longRange = "+2";

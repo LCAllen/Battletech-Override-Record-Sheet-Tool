@@ -4,6 +4,7 @@ using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
+using System.IO;
 using System.Reflection;
 
 namespace BORST
@@ -39,7 +40,9 @@ namespace BORST
 
             // Draw Backgroun
             DrawImage(gfx, "data\\blankMech.png", 0, 0, 430, 285);
-            const string filename = "Out.pdf";
+            string nameAndVariant = "";
+            nameAndVariant = battleMech.chassis + " " + battleMech.variant;
+            string filename = nameAndVariant + ".pdf";
 
             // Write Mech Chassis + Variant (Trim to 29 ~ max size)
             tf.DrawString(battleMech.chassis + " " + battleMech.variant, headerFont, XBrushes.Black,
@@ -228,6 +231,15 @@ namespace BORST
                   XStringFormats.TopLeft);
             }
 
+            string allWeapons = "";
+            foreach (Weapon weapon in battleMech.weapons)
+            {
+                allWeapons += (weapon.ToString() + '\n');
+            }
+            tf.DrawString(allWeapons, weaponFont, XBrushes.Black,
+              new XRect(16, 95, 250, 100),
+              XStringFormats.TopLeft);
+
             string allEquipment = "";
             foreach (Equipment equip in battleMech.equip)
             {
@@ -237,13 +249,42 @@ namespace BORST
               new XRect(50, 215, 180, 60),
               XStringFormats.TopLeft);
 
-            string allWeapons = "";
-            foreach (Weapon weapon in battleMech.weapons)
+            string punchKick = "";
+            switch(battleMech.mass)
             {
-                allWeapons += (weapon.ToString() + '\n');
+                case 20:
+                case 25:
+                case 30:
+                    punchKick = "1 / 2";
+                    break;
+                case 35:
+                case 40:
+                case 45:
+                    punchKick = "2 / 3";
+                    break;
+                case 50:
+                case 55:
+                case 60:
+                    punchKick = "2 / 4";
+                    break;
+                case 65:
+                case 70:
+                case 75:
+                    punchKick = "3 / 5";
+                    break;
+                case 80:
+                case 85:
+                case 90:
+                    punchKick = "3 / 6";
+                    break;
+                case 95:
+                case 100:
+                    punchKick = "4 / 7";
+                    break;
+
             }
-            tf.DrawString(allWeapons, weaponFont, XBrushes.Black,
-              new XRect(16, 95, 250, 60),
+            tf.DrawString(punchKick, weaponFont, XBrushes.Black,
+              new XRect(135, 201, 100, 10),
               XStringFormats.TopLeft);
 
             document.Save(filename);
@@ -270,28 +311,6 @@ namespace BORST
         {
             BattleMech battleMech = new BattleMech();
 
-            /*public string chassis = "";
-            public string variant = "";
-            public bool omnimech = false;
-            public bool doubleHeatSinks = false;
-            public string techBase = "Inner Sphere";
-            public int mass = 0;
-            public int walk = 0;
-            public int jump = 0;
-            public int heatSinks = 0;
-            public string armorType = "";
-            public int armorLA = 0;
-            public int armorRA = 0;
-            public int armorHead = 0;
-            public int armorLT = 0;
-            public int armorCT = 0;
-            public int armorRT = 0;
-            public int armorLTR = 0;
-            public int armorCTR = 0;
-            public int armorRTR = 0;
-            public int armorLL = 0;
-            public int armorRL = 0;*/
-
             battleMech.chassis = textBoxChassis.Text;
             battleMech.variant = textBoxVariant.Text;
             battleMech.omnimech = checkBoxOmni.Checked;
@@ -312,8 +331,15 @@ namespace BORST
             battleMech.armorRTR = int.Parse(textBoxArmorRTR.Text);
             battleMech.armorLL = int.Parse(textBoxArmorLL.Text);
             battleMech.armorRL = int.Parse(textBoxArmorRL.Text);
-            battleMech.weapons = listBoxWeapon.Items.OfType<Weapon>().ToList();
-            battleMech.equip = listBoxEquip.Items.OfType<Equipment>().ToList();
+
+            foreach (Weapon weapon in listBoxWeapon.Items)
+            {
+                battleMech.weapons.Add(weapon);
+            }
+            foreach (Equipment equip in listBoxEquip.Items)
+            {
+                battleMech.equip.Add(equip);
+            }
 
             return battleMech;
         }
@@ -342,8 +368,17 @@ namespace BORST
             textBoxArmorLL.Text = battlemech.armorLL.ToString();
             textBoxArmorRL.Text = battlemech.armorRL.ToString();
 
-            listBoxWeapon.DataSource = battlemech.weapons;
-            listBoxEquip.DataSource = battlemech.equip;
+            listBoxWeapon.Items.Clear();
+            foreach (Weapon weapon in battlemech.weapons)
+            {
+                listBoxWeapon.Items.Add(weapon);
+            }
+            listBoxEquip.Items.Clear();
+            foreach (Equipment equip in battlemech.equip)
+            {
+                listBoxEquip.Items.Add(equip);
+            }
+            
         }
 
         private void mainWindow_Load(object sender, EventArgs e)
@@ -353,7 +388,168 @@ namespace BORST
 
         private void buttonAddWeapon_Click(object sender, EventArgs e)
         {
-
+            switch (comboBoxWeapons.Text)
+            {
+                case "MG":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new MG(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cMG(comboBoxWeaponLoc.Text));
+                    break;
+                case "Flamer":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new Flamer(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cFlamer(comboBoxWeaponLoc.Text));
+                    break;
+                case "AC/2":
+                    listBoxWeapon.Items.Add(new AC2(comboBoxWeaponLoc.Text));
+                    break;
+                case "AC/5":
+                    listBoxWeapon.Items.Add(new AC5(comboBoxWeaponLoc.Text));
+                    break;
+                case "AC/10":
+                    listBoxWeapon.Items.Add(new AC10(comboBoxWeaponLoc.Text));
+                    break;
+                case "AC/20":
+                    listBoxWeapon.Items.Add(new AC20(comboBoxWeaponLoc.Text));
+                    break;
+                case "UAC/2":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new UAC2(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cUAC2(comboBoxWeaponLoc.Text));
+                    break; ;
+                case "UAC/5":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new UAC5(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cUAC5(comboBoxWeaponLoc.Text));
+                    break;
+                case "UAC/10":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new UAC10(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cUAC10(comboBoxWeaponLoc.Text));
+                    break;
+                case "UAC/20":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new UAC20(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cUAC20(comboBoxWeaponLoc.Text));
+                    break;
+                case "LB2-X":
+                    listBoxWeapon.Items.Add(new LB2X(comboBoxWeaponLoc.Text));
+                    break;
+                case "LB5-X":
+                    listBoxWeapon.Items.Add(new LB5X(comboBoxWeaponLoc.Text));
+                    break;
+                case "LB10-X":
+                    listBoxWeapon.Items.Add(new LB10X(comboBoxWeaponLoc.Text));
+                    break;
+                case "LB20-X":
+                    listBoxWeapon.Items.Add(new LB20X(comboBoxWeaponLoc.Text));
+                    break;
+                case "SRM-2":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new SRM2(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cSRM2(comboBoxWeaponLoc.Text));
+                    break; ;
+                case "SRM-4":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new SRM4(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cSRM4(comboBoxWeaponLoc.Text));
+                    break;
+                case "SRM-6":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new SRM6(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cSRM6(comboBoxWeaponLoc.Text));
+                    break;
+                case "Streak SRM-2":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new StreakSRM2(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cStreakSRM2(comboBoxWeaponLoc.Text));
+                    break; ;
+                case "Streak SRM-4":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new StreakSRM4(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cStreakSRM4(comboBoxWeaponLoc.Text));
+                    break;
+                case "Streak SRM-6":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new StreakSRM6(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cStreakSRM6(comboBoxWeaponLoc.Text));
+                    break;
+                case "LRM-5":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new LRM5(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cLRM5(comboBoxWeaponLoc.Text));
+                    break; ;
+                case "LRM-10":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new LRM10(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cLRM10(comboBoxWeaponLoc.Text));
+                    break;
+                case "LRM-15":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new LRM15(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cLRM15(comboBoxWeaponLoc.Text));
+                    break;
+                case "LRM-20":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new LRM20(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cLRM20(comboBoxWeaponLoc.Text));
+                    break;
+                case "S Las":
+                        listBoxWeapon.Items.Add(new SLas(comboBoxWeaponLoc.Text));
+                    break;
+                case "M Las":
+                        listBoxWeapon.Items.Add(new MLas(comboBoxWeaponLoc.Text));
+                    break;
+                case "L Las":
+                        listBoxWeapon.Items.Add(new LLas(comboBoxWeaponLoc.Text));
+                    break;
+                case "ER S Las":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new erSLas(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cerSLas(comboBoxWeaponLoc.Text));
+                    break;
+                case "ER M Las":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new erMLas(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cerMLas(comboBoxWeaponLoc.Text));
+                    break;
+                case "ER L Las":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new erLLas(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cerLLas(comboBoxWeaponLoc.Text));
+                    break;
+                case "S Pul Las":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new SpLas(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cSpLas(comboBoxWeaponLoc.Text));
+                    break;
+                case "M Pul Las":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new MpLas(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cMpLas(comboBoxWeaponLoc.Text));
+                    break;
+                case "L Pul Las":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new LpLas(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cLpLas(comboBoxWeaponLoc.Text));
+                    break;
+                case "PPC":
+                        listBoxWeapon.Items.Add(new PPC(comboBoxWeaponLoc.Text));
+                    break;
+                case "ER PPC":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new erPPC(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cerPPC(comboBoxWeaponLoc.Text));
+                    break;
+                case "Gauss Rifle":
+                    if (!checkBoxOmni.Checked)
+                        listBoxWeapon.Items.Add(new Gauss(comboBoxWeaponLoc.Text));
+                    else listBoxWeapon.Items.Add(new cGauss(comboBoxWeaponLoc.Text));
+                    break;
+                case "Arrow IV":
+                        listBoxWeapon.Items.Add(new ArrowIV(comboBoxWeaponLoc.Text));
+                    break;
+            }
         }
 
         private void comboBoxWeapons_SelectedIndexChanged(object sender, EventArgs e)

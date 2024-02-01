@@ -326,7 +326,7 @@
             // comboBoxWeaponLoc
             // 
             comboBoxWeaponLoc.FormattingEnabled = true;
-            comboBoxWeaponLoc.Items.AddRange(new object[] { "LA", "RA", "T", "HD", "LL", "RL" });
+            comboBoxWeaponLoc.Items.AddRange(new object[] { "(LA)", "(RA)", "(T)", "(HD)", "(LL)", "(RL)" });
             comboBoxWeaponLoc.Location = new Point(349, 208);
             comboBoxWeaponLoc.Name = "comboBoxWeaponLoc";
             comboBoxWeaponLoc.Size = new Size(63, 23);
@@ -335,7 +335,7 @@
             // comboBoxEquipLoc
             // 
             comboBoxEquipLoc.FormattingEnabled = true;
-            comboBoxEquipLoc.Items.AddRange(new object[] { "LA", "RA", "T", "HD", "LL", "RL" });
+            comboBoxEquipLoc.Items.AddRange(new object[] { "(LA)", "(RA)", "(T)", "(HD)", "(LL)", "(RL)" });
             comboBoxEquipLoc.Location = new Point(349, 442);
             comboBoxEquipLoc.Name = "comboBoxEquipLoc";
             comboBoxEquipLoc.Size = new Size(63, 23);
