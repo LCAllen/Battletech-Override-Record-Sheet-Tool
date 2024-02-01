@@ -15,7 +15,7 @@ public abstract class Equipment
     public override string ToString()
     {
         return (this.displayName + " - "
-            + this.subtype
+            + this.subtype + " "
             + this.location.ToUpper());
     }
 }

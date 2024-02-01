@@ -28,7 +28,6 @@ namespace BORST
 
             // Create and setup new PDF
             PdfDocument document = new PdfDocument();
-            document.Info.Title = "Created with PDFsharp";
             PdfPage page = document.AddPage();
             page.Width = "7in";
             page.Height = "5in";
@@ -42,6 +41,7 @@ namespace BORST
             DrawImage(gfx, "data\\blankMech.png", 0, 0, 504, 360);
             string nameAndVariant = "";
             nameAndVariant = battleMech.chassis + " " + battleMech.variant;
+            document.Info.Title = nameAndVariant;
             string filename = nameAndVariant + ".pdf";
 
             // Write Mech Chassis + Variant (Trim to 29 ~ max size)
