@@ -36,7 +36,7 @@ namespace BORST
             XTextFormatter tf = new XTextFormatter(gfx);
             XFont headerFont = new XFont("Verdana", 14, XFontStyleEx.Regular);
             XFont detailFont = new XFont("Verdana", 8, XFontStyleEx.Regular);
-            XFont weaponFont = new XFont("Courier New", 8, XFontStyleEx.Bold);
+            XFont weaponFont = new XFont("Courier New", 9, XFontStyleEx.Bold);
 
             // Draw Backgroun
             DrawImage(gfx, "data\\blankMech.png", 0, 0, 504, 360);
@@ -46,32 +46,32 @@ namespace BORST
 
             // Write Mech Chassis + Variant (Trim to 29 ~ max size)
             tf.DrawString(battleMech.chassis + " " + battleMech.variant, headerFont, XBrushes.Black,
-              new XRect(12, 8, 250, 20),
+              new XRect(13, 12, 250, 20),
               XStringFormats.TopLeft);
 
             if (!battleMech.omnimech)
             {
                 tf.DrawString("BattleMech", detailFont, XBrushes.Black,
-                  new XRect(33, 38, 250, 10),
+                  new XRect(36, 50, 250, 10),
                   XStringFormats.TopLeft);
             }
             else
             {
                 tf.DrawString("OmniMech", detailFont, XBrushes.Black,
-                  new XRect(33, 38, 250, 10),
+                  new XRect(36, 50, 250, 10),
                   XStringFormats.TopLeft);
             }
 
             tf.DrawString(battleMech.mass.ToString(), detailFont, XBrushes.Black,
-              new XRect(33, 48, 100, 10),
+              new XRect(41, 62, 100, 10),
               XStringFormats.TopLeft);
 
             tf.DrawString(battleMech.walk.ToString(), detailFont, XBrushes.Black,
-              new XRect(33, 61, 100, 10),
+              new XRect(40, 79, 100, 10),
               XStringFormats.TopLeft);
 
             tf.DrawString(" / " + Math.Ceiling(battleMech.walk * 1.5).ToString(), detailFont, XBrushes.Black,
-              new XRect(40, 61, 100, 10),
+              new XRect(46, 79, 100, 10),
               XStringFormats.TopLeft);
 
             int cooling;
@@ -84,7 +84,7 @@ namespace BORST
                 cooling = (int)((battleMech.heatSinks + 1) / 2.5);
             }
             tf.DrawString(cooling.ToString(), detailFont, XBrushes.Black,
-              new XRect(111, 61, 100, 10),
+              new XRect(130, 79, 100, 10),
               XStringFormats.TopLeft);
 
             int tmmWalk;
@@ -131,7 +131,7 @@ namespace BORST
             }
 
             tf.DrawString(tmmWalk.ToString(), detailFont, XBrushes.Black,
-              new XRect(33, 71, 100, 10),
+              new XRect(40, 91, 100, 10),
               XStringFormats.TopLeft);
 
             int tmmRun;
@@ -178,7 +178,7 @@ namespace BORST
             }
 
             tf.DrawString(" / " + tmmRun.ToString(), detailFont, XBrushes.Black,
-              new XRect(40, 71, 100, 10),
+              new XRect(46, 91, 100, 10),
               XStringFormats.TopLeft);
 
             if (battleMech.jump != 0)
@@ -227,7 +227,7 @@ namespace BORST
                 }
                 tmmJump += 1;
                 tf.DrawString(" / " + tmmJump.ToString(), detailFont, XBrushes.Black,
-                  new XRect(55, 71, 100, 10),
+                  new XRect(61, 91, 100, 10),
                   XStringFormats.TopLeft);
             }
 
@@ -237,7 +237,7 @@ namespace BORST
                 allWeapons += (weapon.ToString() + '\n');
             }
             tf.DrawString(allWeapons, weaponFont, XBrushes.Black,
-              new XRect(16, 95, 250, 100),
+              new XRect(16, 124, 250, 100),
               XStringFormats.TopLeft);
 
             string allEquipment = "";
@@ -246,7 +246,7 @@ namespace BORST
                 allEquipment += (equip.ToString() + " | ");
             }
             tf.DrawString(allEquipment, detailFont, XBrushes.Black,
-              new XRect(50, 215, 180, 60),
+              new XRect(55, 273, 180, 60),
               XStringFormats.TopLeft);
 
             string punchKick = "";
@@ -284,7 +284,7 @@ namespace BORST
 
             }
             tf.DrawString(punchKick, weaponFont, XBrushes.Black,
-              new XRect(135, 201, 100, 10),
+              new XRect(86, 254, 100, 10),
               XStringFormats.TopLeft);
 
             document.Save(filename);
