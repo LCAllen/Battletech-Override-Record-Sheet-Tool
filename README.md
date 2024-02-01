@@ -6,8 +6,3 @@ TODO:
 - Clean up and comment code.
 - Finish PDF export.
 - Remove some unused code.
-
-
-Credits:
-- Levi Cherry-Allen
-- Andrew Jolley
