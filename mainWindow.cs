@@ -30,8 +30,8 @@ namespace BORST
             PdfDocument document = new PdfDocument();
             document.Info.Title = "Created with PDFsharp";
             PdfPage page = document.AddPage();
-            page.Width = "6in";
-            page.Height = "4in";
+            page.Width = "7in";
+            page.Height = "5in";
             XGraphics gfx = XGraphics.FromPdfPage(page);
             XTextFormatter tf = new XTextFormatter(gfx);
             XFont headerFont = new XFont("Verdana", 14, XFontStyleEx.Regular);
@@ -39,7 +39,7 @@ namespace BORST
             XFont weaponFont = new XFont("Courier New", 8, XFontStyleEx.Bold);
 
             // Draw Backgroun
-            DrawImage(gfx, "data\\blankMech.png", 0, 0, 430, 285);
+            DrawImage(gfx, "data\\blankMech.png", 0, 0, 504, 360);
             string nameAndVariant = "";
             nameAndVariant = battleMech.chassis + " " + battleMech.variant;
             string filename = nameAndVariant + ".pdf";
