@@ -37,8 +37,46 @@ namespace BORST
             XFont detailFont = new XFont("Verdana", 8, XFontStyleEx.Regular);
             XFont weaponFont = new XFont("Courier New", 9, XFontStyleEx.Bold);
 
+            string blankPdfPath = "";
             // Draw Backgroun
-            DrawImage(gfx, "data\\blankMech.png", 0, 0, 504, 360);
+            switch(battleMech.mass)
+            {
+                case 20:
+                    blankPdfPath = "data\\blankMech_20t.png"; break;
+                case 25:
+                    blankPdfPath = "data\\blankMech_25t.png"; break;
+                case 30:
+                    blankPdfPath = "data\\blankMech_30t.png"; break;
+                case 35:
+                    blankPdfPath = "data\\blankMech_35t.png"; break;
+                case 40:
+                    blankPdfPath = "data\\blankMech_40t.png"; break;
+                case 45:
+                    blankPdfPath = "data\\blankMech_45t.png"; break;
+                case 50:
+                    blankPdfPath = "data\\blankMech_50t.png"; break;
+                case 55:
+                    blankPdfPath = "data\\blankMech_55t.png"; break;
+                case 60:
+                    blankPdfPath = "data\\blankMech_60t.png"; break;
+                case 65:
+                    blankPdfPath = "data\\blankMech_65t.png"; break;
+                case 70:
+                    blankPdfPath = "data\\blankMech_70t.png"; break;
+                case 75:
+                    blankPdfPath = "data\\blankMech_75t.png"; break;
+                case 80:
+                    blankPdfPath = "data\\blankMech_80t.png"; break;
+                case 85:
+                    blankPdfPath = "data\\blankMech_85t.png"; break;
+                case 90:
+                    blankPdfPath = "data\\blankMech_90t.png"; break;
+                case 95:
+                    blankPdfPath = "data\\blankMech_95t.png"; break;
+                case 100:
+                    blankPdfPath = "data\\blankMech_100t.png"; break;
+            }
+            DrawImage(gfx, blankPdfPath, 0, 0, 504, 360);
             string nameAndVariant = "";
             nameAndVariant = battleMech.chassis + " " + battleMech.variant;
             document.Info.Title = nameAndVariant;
@@ -286,6 +324,16 @@ namespace BORST
             tf.DrawString(punchKick, weaponFont, XBrushes.Black,
               new XRect(86, 254, 100, 10),
               XStringFormats.TopLeft);
+            int HDArmorPips = 0;
+            int TArmorPips = 0;
+            int RTArmorPips = 0;
+            int LAArmorPips = 0;
+            int RAArmorPips = 0;
+            int LLArmorPips = 0;
+            int RLArmorPips = 0;
+
+            if (battleMech.armorHD == 1) HDArmorPips = 1; else HDArmorPips = (int)Math.Floor(battleMech.armorHD / 2.0);
+            if (battleMech.armorCT == 1) TArmorPips = 1; else TArmorPips = (int)Math.Floor(battleMech.armorHD / 2.0);
 
             document.Save(filename);
             document.Close();
