@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Diagnostics.Metrics;
 using System.IO;
 using System.Reflection;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BORST
 {
@@ -332,8 +333,97 @@ namespace BORST
             int LLArmorPips = 0;
             int RLArmorPips = 0;
 
-            if (battleMech.armorHD == 1) HDArmorPips = 1; else HDArmorPips = (int)Math.Floor(battleMech.armorHD / 2.0);
-            if (battleMech.armorCT == 1) TArmorPips = 1; else TArmorPips = (int)Math.Floor(battleMech.armorHD / 2.0);
+            HDArmorPips = (int)Math.Floor(battleMech.armorHD / 2.0);
+            if (HDArmorPips == 0) HDArmorPips = 1;
+            // 1-4
+            switch(HDArmorPips)
+            {
+                case 1:
+                    DrawImage(gfx, "data\\pip_white.png", 383, 80, 7, 7);
+                    break;
+                case 2:
+                    DrawImage(gfx, "data\\pip_white.png", 383, 80, 7, 7);
+                    DrawImage(gfx, "data\\pip_white.png", 383, 72, 7, 7);
+                    break;
+                case 3:
+                    DrawImage(gfx, "data\\pip_white.png", 376, 80, 7, 7);
+                    DrawImage(gfx, "data\\pip_white.png", 383, 80, 7, 7);
+                    DrawImage(gfx, "data\\pip_white.png", 390, 80, 7, 7);
+                    break;
+                case 4:
+                    DrawImage(gfx, "data\\pip_white.png", 376, 80, 7, 7);
+                    DrawImage(gfx, "data\\pip_white.png", 383, 80, 7, 7);
+                    DrawImage(gfx, "data\\pip_white.png", 390, 80, 7, 7);
+                    DrawImage(gfx, "data\\pip_white.png", 383, 72, 7, 7);
+                    break;
+            }
+            // 1-21
+            TArmorPips = (int)Math.Round((battleMech.armorCT + battleMech.armorLT + battleMech.armorRT) / 6.0, 0, MidpointRounding.AwayFromZero);
+            if (TArmorPips == 0) TArmorPips = 1;
+            switch (TArmorPips)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                // ...
+            }
+
+            // 1-6
+            RTArmorPips = (int)Math.Round((battleMech.armorCTR + battleMech.armorLTR + battleMech.armorRTR) / 6.0, 0, MidpointRounding.AwayFromZero);
+            if (RTArmorPips == 0) RTArmorPips = 1;
+            switch (RTArmorPips)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                    // ...
+            }
+            // 1-14
+            LAArmorPips = (int)Math.Floor((battleMech.armorLA + 1) / 3.0);
+            if (LAArmorPips == 0) LAArmorPips = 1;
+            switch (LAArmorPips)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                    // ...
+            }
+            // 1-14
+            RAArmorPips = (int)Math.Floor((battleMech.armorRA + 1) / 3.0);
+            if (RAArmorPips == 0) RAArmorPips = 1;
+            switch (RAArmorPips)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                    // ...
+            }
+            // 1-14
+            LLArmorPips = (int)Math.Floor((battleMech.armorLL + 1) / 3.0);
+            if (LLArmorPips == 0) LLArmorPips = 1;
+            switch (LLArmorPips)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                    // ...
+            }
+            // 1-14
+            RLArmorPips = (int)Math.Floor((battleMech.armorRL + 1) / 3.0);
+            if (RLArmorPips == 0) RLArmorPips = 1;
+            switch (RLArmorPips)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                    // ...
+            }
 
             document.Save(filename);
             document.Close();
@@ -375,6 +465,7 @@ namespace BORST
             battleMech.armorLT = int.Parse(textBoxArmorLT.Text);
             battleMech.armorCT = int.Parse(textBoxArmorCT.Text);
             battleMech.armorRT = int.Parse(textBoxArmorRT.Text);
+            battleMech.armorCTR = int.Parse(textBoxArmorCTR.Text);
             battleMech.armorLTR = int.Parse(textBoxArmorLTR.Text);
             battleMech.armorRTR = int.Parse(textBoxArmorRTR.Text);
             battleMech.armorLL = int.Parse(textBoxArmorLL.Text);
