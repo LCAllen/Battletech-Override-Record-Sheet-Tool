@@ -120,6 +120,27 @@ namespace BORST
                             case string subtype when subtype.Contains("machine gun"):
                                 sub = "MG";
                                 break;
+                            case string subtype when subtype.Contains("lrm5"):
+                                sub = "LRM-5";
+                                break;
+                            case string subtype when subtype.Contains("lrm10"):
+                                sub = "LRM-10";
+                                break;
+                            case string subtype when subtype.Contains("lrm15"):
+                                sub = "LRM-15";
+                                break;
+                            case string subtype when subtype.Contains("lrm20"):
+                                sub = "LRM-20";
+                                break;
+                            case string subtype when subtype.Contains("srm2"):
+                                sub = "SRM-2";
+                                break;
+                            case string subtype when subtype.Contains("srm4"):
+                                sub = "SRM-4";
+                                break;
+                            case string subtype when subtype.Contains("srm6"):
+                                sub = "SRM-6";
+                                break;
                             case string subtype when subtype.Contains("lrm-5"):
                                 sub = "LRM-5";
                                 break;
