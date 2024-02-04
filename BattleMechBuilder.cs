@@ -114,11 +114,20 @@ namespace BORST
                     case string type when type.Contains("ammo"):
                         switch (type) 
                         {
+                            case string subtype when subtype.Contains("mg"):
+                                sub = "MG";
+                                break;
+                            case string subtype when subtype.Contains("machine gun"):
+                                sub = "MG";
+                                break;
                             case string subtype when subtype.Contains("lrm-5"):
                                 sub = "LRM-5";
                                 break;
                             case string subtype when subtype.Contains("lrm-10"):
                                 sub = "LRM-10";
+                                break;
+                            case string subtype when subtype.Contains("lrm-15"):
+                                sub = "LRM-15";
                                 break;
                             case string subtype when subtype.Contains("lrm-20"):
                                 sub = "LRM-20";
@@ -294,7 +303,19 @@ namespace BORST
                         battleMech.weapons.Add(new AC10(locationCode));
                         break;
                     case "ac/20":
+                        battleMech.weapons.Add(new AC20(locationCode));
+                        break;
+                    case "autocannon/2":
+                        battleMech.weapons.Add(new AC2(locationCode));
+                        break;
+                    case "autocannon/5":
+                        battleMech.weapons.Add(new AC5(locationCode));
+                        break;
+                    case "autocannon/10":
                         battleMech.weapons.Add(new AC10(locationCode));
+                        break;
+                    case "autocannon/20":
+                        battleMech.weapons.Add(new AC20(locationCode));
                         break;
                     case "small laser":
                         battleMech.weapons.Add(new SLas(locationCode));
