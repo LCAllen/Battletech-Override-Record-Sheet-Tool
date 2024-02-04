@@ -339,16 +339,16 @@ namespace BORST
             switch(HDArmorPips)
             {
                 case 1:
-                    DrawImage(gfx, "data\\H1.png", 374, 75, 25, 14);
+                    DrawImage(gfx, "data\\pipsHD\\HD1.png", 374, 75, 25, 14);
                     break;
                 case 2:
-                    DrawImage(gfx, "data\\H2.png", 374, 75, 25, 14);
+                    DrawImage(gfx, "data\\pipsHD\\HD2.png", 374, 75, 25, 14);
                     break;
                 case 3:
-                    DrawImage(gfx, "data\\H3.png", 374, 75, 25, 14);
+                    DrawImage(gfx, "data\\pipsHD\\HD3.png", 374, 75, 25, 14);
                     break;
                 case 4:
-                    DrawImage(gfx, "data\\H4.png", 374, 75, 25, 14);
+                    DrawImage(gfx, "data\\pipsHD\\HD4.png", 374, 75, 25, 14);
                     break;
             }
             // 1-21
@@ -357,67 +357,67 @@ namespace BORST
             switch (TArmorPips)
             {
                 case 1:
-                    DrawImage(gfx, "data\\CT1.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT1.png", 354, 120, 66, 21);
                     break;
                 case 2:
-                    DrawImage(gfx, "data\\CT2.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT2.png", 354, 120, 66, 21);
                     break;
                 case 3:
-                    DrawImage(gfx, "data\\CT3.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT3.png", 354, 120, 66, 21);
                     break;
                 case 4:
-                    DrawImage(gfx, "data\\CT4.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT4.png", 354, 120, 66, 21);
                     break;
                 case 5:
-                    DrawImage(gfx, "data\\CT5.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT5.png", 354, 120, 66, 21);
                     break;
                 case 6:
-                    DrawImage(gfx, "data\\CT6.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT6.png", 354, 120, 66, 21);
                     break;
                 case 7:
-                    DrawImage(gfx, "data\\CT7.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT7.png", 354, 120, 66, 21);
                     break;
                 case 8:
-                    DrawImage(gfx, "data\\CT8.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT8.png", 354, 120, 66, 21);
                     break;
                 case 9:
-                    DrawImage(gfx, "data\\CT9.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT9.png", 354, 120, 66, 21);
                     break;
                 case 10:
-                    DrawImage(gfx, "data\\CT10.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT10.png", 354, 120, 66, 21);
                     break;
                 case 11:
-                    DrawImage(gfx, "data\\CT11.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT11.png", 354, 120, 66, 21);
                     break;
                 case 12:
-                    DrawImage(gfx, "data\\CT12.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT12.png", 354, 120, 66, 21);
                     break;
                 case 13:
-                    DrawImage(gfx, "data\\CT13.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT13.png", 354, 120, 66, 21);
                     break;
                 case 14:
-                    DrawImage(gfx, "data\\CT14.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT14.png", 354, 120, 66, 21);
                     break;
                 case 15:
-                    DrawImage(gfx, "data\\CT15.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT15.png", 354, 120, 66, 21);
                     break;
                 case 16:
-                    DrawImage(gfx, "data\\CT16.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT16.png", 354, 120, 66, 21);
                     break;
                 case 17:
-                    DrawImage(gfx, "data\\CT17.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT17.png", 354, 120, 66, 21);
                     break;
                 case 18:
-                    DrawImage(gfx, "data\\CT18.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT18.png", 354, 120, 66, 21);
                     break;
                 case 19:
-                    DrawImage(gfx, "data\\CT19.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT19.png", 354, 120, 66, 21);
                     break;
                 case 20:
-                    DrawImage(gfx, "data\\CT20.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT20.png", 354, 120, 66, 21);
                     break;
                 case 21:
-                    DrawImage(gfx, "data\\CT21.png", 354, 120, 66, 21);
+                    DrawImage(gfx, "data\\pipsCT\\CT21.png", 354, 120, 66, 21);
                     break;
                     // ...
             }
@@ -428,34 +428,34 @@ namespace BORST
             switch (RTArmorPips)
             {
                 case 1:
-                    DrawImage(gfx, "data\\RTA1.png", 374, 288, 24, 27);
+                    DrawImage(gfx, "data\\pipsRT\\RT1.png", 374, 288, 24, 27);
                     break;
                 case 2:
-                    DrawImage(gfx, "data\\RTA2.png", 374, 288, 24, 27);
+                    DrawImage(gfx, "data\\pipsRT\\RT2.png", 374, 288, 24, 27);
                     break;
                 case 3:
-                    DrawImage(gfx, "data\\RTA3.png", 374, 288, 24, 27);
+                    DrawImage(gfx, "data\\pipsRT\\RT3.png", 374, 288, 24, 27);
                     break;
                 case 4:
-                    DrawImage(gfx, "data\\RTA4.png", 374, 288, 24, 27);
+                    DrawImage(gfx, "data\\pipsRT\\RT4.png", 374, 288, 24, 27);
                     break;
                 case 5:
-                    DrawImage(gfx, "data\\RTA5.png", 374, 288, 24, 27);
+                    DrawImage(gfx, "data\\pipsRT\\RT5.png", 374, 288, 24, 27);
                     break;
                 case 6:
-                    DrawImage(gfx, "data\\RTA6.png", 374, 288, 24, 27);
+                    DrawImage(gfx, "data\\pipsRT\\RT6.png", 374, 288, 24, 27);
                     break;
                 case 7:
-                    DrawImage(gfx, "data\\RTA7.png", 374, 288, 24, 27);
+                    DrawImage(gfx, "data\\pipsRT\\RT7.png", 374, 288, 24, 27);
                     break;
                 case 8:
-                    DrawImage(gfx, "data\\RTA8.png", 374, 288, 24, 27);
+                    DrawImage(gfx, "data\\pipsRT\\RT8.png", 374, 288, 24, 27);
                     break;
                 case 9:
-                    DrawImage(gfx, "data\\RTA9.png", 374, 288, 24, 27);
+                    DrawImage(gfx, "data\\pipsRT\\RT9.png", 374, 288, 24, 27);
                     break;
                 case 10:
-                    DrawImage(gfx, "data\\RTA10.png", 374, 288, 24, 27);
+                    DrawImage(gfx, "data\\pipsRT\\RT10.png", 374, 288, 24, 27);
                     break;
                     // ...
             }
@@ -465,37 +465,37 @@ namespace BORST
             switch (LAArmorPips)
             {
                 case 1:
-                    DrawImage(gfx, "data\\LA1.png", 303, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsLA\\LA1.png", 303, 104, 19, 40);
                     break;
                 case 2:
-                    DrawImage(gfx, "data\\LA2.png", 303, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsLA\\LA2.png", 303, 104, 19, 40);
                     break;
                 case 3:
-                    DrawImage(gfx, "data\\LA3.png", 303, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsLA\\LA3.png", 303, 104, 19, 40);
                     break;
                 case 4:
-                    DrawImage(gfx, "data\\LA4.png", 303, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsLA\\LA4.png", 303, 104, 19, 40);
                     break;
                 case 5:
-                    DrawImage(gfx, "data\\LA5.png", 303, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsLA\\LA5.png", 303, 104, 19, 40);
                     break;
                 case 6:
-                    DrawImage(gfx, "data\\LA6.png", 303, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsLA\\LA6.png", 303, 104, 19, 40);
                     break;
                 case 7:
-                    DrawImage(gfx, "data\\LA7.png", 303, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsLA\\LA7.png", 303, 104, 19, 40);
                     break;
                 case 8:
-                    DrawImage(gfx, "data\\LA8.png", 303, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsLA\\LA8.png", 303, 104, 19, 40);
                     break;
                 case 9:
-                    DrawImage(gfx, "data\\LA9.png", 303, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsLA\\LA9.png", 303, 104, 19, 40);
                     break;
                 case 10:
-                    DrawImage(gfx, "data\\LA10.png", 303, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsLA\\LA10.png", 303, 104, 19, 40);
                     break;
                 case 11:
-                    DrawImage(gfx, "data\\LA11.png", 303, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsLA\\LA11.png", 303, 104, 19, 40);
                     break;
                     // ...
             }
@@ -505,37 +505,37 @@ namespace BORST
             switch (RAArmorPips)
             {
                 case 1:
-                    DrawImage(gfx, "data\\RA1.png", 450, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsRA\\RA1.png", 450, 104, 19, 40);
                     break;
                 case 2:
-                    DrawImage(gfx, "data\\RA2.png", 450, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsRA\\RA2.png", 450, 104, 19, 40);
                     break;
                 case 3:
-                    DrawImage(gfx, "data\\RA3.png", 450, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsRA\\RA3.png", 450, 104, 19, 40);
                     break;
                 case 4:
-                    DrawImage(gfx, "data\\RA4.png", 450, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsRA\\RA4.png", 450, 104, 19, 40);
                     break;
                 case 5:
-                    DrawImage(gfx, "data\\RA5.png", 450, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsRA\\RA5.png", 450, 104, 19, 40);
                     break;
                 case 6:
-                    DrawImage(gfx, "data\\RA6.png", 450, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsRA\\RA6.png", 450, 104, 19, 40);
                     break;
                 case 7:
-                    DrawImage(gfx, "data\\RA7.png", 450, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsRA\\RA7.png", 450, 104, 19, 40);
                     break;
                 case 8:
-                    DrawImage(gfx, "data\\RA8.png", 450, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsRA\\RA8.png", 450, 104, 19, 40);
                     break;
                 case 9:
-                    DrawImage(gfx, "data\\RA9.png", 450, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsRA\\RA9.png", 450, 104, 19, 40);
                     break;
                 case 10:
-                    DrawImage(gfx, "data\\RA10.png", 450, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsRA\\RA10.png", 450, 104, 19, 40);
                     break;
                 case 11:
-                    DrawImage(gfx, "data\\RA11.png", 450, 104, 19, 40);
+                    DrawImage(gfx, "data\\pipsRA\\RA11.png", 450, 104, 19, 40);
                     break;
                     // ...
             }
@@ -545,46 +545,46 @@ namespace BORST
             switch (LLArmorPips)
             {
                 case 1:
-                    DrawImage(gfx, "data\\LL1.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL1.png", 336, 222, 26, 47);
                     break;
                 case 2:
-                    DrawImage(gfx, "data\\LL2.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL2.png", 336, 222, 26, 47);
                     break;
                 case 3:
-                    DrawImage(gfx, "data\\LL3.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL3.png", 336, 222, 26, 47);
                     break;
                 case 4:
-                    DrawImage(gfx, "data\\LL4.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL4.png", 336, 222, 26, 47);
                     break;
                 case 5:
-                    DrawImage(gfx, "data\\LL5.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL5.png", 336, 222, 26, 47);
                     break;
                 case 6:
-                    DrawImage(gfx, "data\\LL6.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL6.png", 336, 222, 26, 47);
                     break;
                 case 7:
-                    DrawImage(gfx, "data\\LL7.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL7.png", 336, 222, 26, 47);
                     break;
                 case 8:
-                    DrawImage(gfx, "data\\LL8.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL8.png", 336, 222, 26, 47);
                     break;
                 case 9:
-                    DrawImage(gfx, "data\\LL9.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL9.png", 336, 222, 26, 47);
                     break;
                 case 10:
-                    DrawImage(gfx, "data\\LL10.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL10.png", 336, 222, 26, 47);
                     break;
                 case 11:
-                    DrawImage(gfx, "data\\LL11.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL11.png", 336, 222, 26, 47);
                     break;
                 case 12:
-                    DrawImage(gfx, "data\\LL12.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL12.png", 336, 222, 26, 47);
                     break;
                 case 13:
-                    DrawImage(gfx, "data\\LL13.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL13.png", 336, 222, 26, 47);
                     break;
                 case 14:
-                    DrawImage(gfx, "data\\LL14.png", 336, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsLL\\LL14.png", 336, 222, 26, 47);
                     break;
                     // ...
             }
@@ -594,46 +594,46 @@ namespace BORST
             switch (RLArmorPips)
             {
                 case 1:
-                    DrawImage(gfx, "data\\RL1.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL1.png", 411, 222, 26, 47);
                     break;
                 case 2:
-                    DrawImage(gfx, "data\\RL2.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL2.png", 411, 222, 26, 47);
                     break;
                 case 3:
-                    DrawImage(gfx, "data\\RL3.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL3.png", 411, 222, 26, 47);
                     break;
                 case 4:
-                    DrawImage(gfx, "data\\RL4.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL4.png", 411, 222, 26, 47);
                     break;
                 case 5:
-                    DrawImage(gfx, "data\\RL5.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL5.png", 411, 222, 26, 47);
                     break;
                 case 6:
-                    DrawImage(gfx, "data\\RL6.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL6.png", 411, 222, 26, 47);
                     break;
                 case 7:
-                    DrawImage(gfx, "data\\RL7.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL7.png", 411, 222, 26, 47);
                     break;
                 case 8:
-                    DrawImage(gfx, "data\\RL8.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL8.png", 411, 222, 26, 47);
                     break;
                 case 9:
-                    DrawImage(gfx, "data\\RL9.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL9.png", 411, 222, 26, 47);
                     break;
                 case 10:
-                    DrawImage(gfx, "data\\RL10.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL10.png", 411, 222, 26, 47);
                     break;
                 case 11:
-                    DrawImage(gfx, "data\\RL11.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL11.png", 411, 222, 26, 47);
                     break;
                 case 12:
-                    DrawImage(gfx, "data\\RL12.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL12.png", 411, 222, 26, 47);
                     break;
                 case 13:
-                    DrawImage(gfx, "data\\RL13.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL13.png", 411, 222, 26, 47);
                     break;
                 case 14:
-                    DrawImage(gfx, "data\\RL14.png", 411, 222, 26, 47);
+                    DrawImage(gfx, "data\\pipsRL\\RL14.png", 411, 222, 26, 47);
                     break;
                     // ...
             }
