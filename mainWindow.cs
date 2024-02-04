@@ -39,7 +39,7 @@ namespace BORST
             XFont weaponFont = new XFont("Courier New", 9, XFontStyleEx.Bold);
 
             string blankPdfPath = "";
-            // Draw Backgroun
+            // Pick background based on tonnage
             switch(battleMech.mass)
             {
                 case 20:
@@ -74,20 +74,26 @@ namespace BORST
                     blankPdfPath = "data\\blankMech_90t.png"; break;
                 case 95:
                     blankPdfPath = "data\\blankMech_95t.png"; break;
-                case 100:
+                default:
                     blankPdfPath = "data\\blankMech_100t.png"; break;
             }
+
+            // Draw background
             DrawImage(gfx, blankPdfPath, 0, 0, 504, 360);
+
+            // Calc mech name
             string nameAndVariant = "";
             nameAndVariant = battleMech.chassis + " " + battleMech.variant;
+            string filename;
+            if (nameAndVariant != "") filename = nameAndVariant + ".pdf"; else filename = "Error";
             document.Info.Title = nameAndVariant;
-            string filename = nameAndVariant + ".pdf";
 
             // Write Mech Chassis + Variant (Trim to 29 ~ max size)
             tf.DrawString(battleMech.chassis + " " + battleMech.variant, headerFont, XBrushes.Black,
               new XRect(13, 12, 250, 20),
               XStringFormats.TopLeft);
 
+            // Draw omnimech status
             if (!battleMech.omnimech)
             {
                 tf.DrawString("BattleMech", detailFont, XBrushes.Black,
@@ -101,18 +107,22 @@ namespace BORST
                   XStringFormats.TopLeft);
             }
 
+            // Draw tonnage
             tf.DrawString(battleMech.mass.ToString() + " Tons", detailFont, XBrushes.Black,
               new XRect(41, 62, 100, 10),
               XStringFormats.TopLeft);
 
+            // Draw walk speed
             tf.DrawString(battleMech.walk.ToString(), detailFont, XBrushes.Black,
               new XRect(40, 79, 100, 10),
               XStringFormats.TopLeft);
 
+            // Draw sprint speed
             tf.DrawString(" / " + Math.Ceiling(battleMech.walk * 1.5).ToString(), detailFont, XBrushes.Black,
               new XRect(46, 79, 100, 10),
               XStringFormats.TopLeft);
 
+            // Calc cooling
             int cooling;
             if (!battleMech.doubleHeatSinks)
             {
@@ -122,10 +132,13 @@ namespace BORST
             {
                 cooling = (int)((battleMech.heatSinks + 1) / 2.5);
             }
+
+            // Draw cooling
             tf.DrawString(cooling.ToString(), detailFont, XBrushes.Black,
               new XRect(130, 79, 100, 10),
               XStringFormats.TopLeft);
 
+            // Calc walk TMM
             int tmmWalk;
             switch (battleMech.walk)
             {
@@ -169,10 +182,12 @@ namespace BORST
                 default: tmmWalk = 6; break;
             }
 
+            // Draw walk TMM
             tf.DrawString(tmmWalk.ToString(), detailFont, XBrushes.Black,
               new XRect(40, 91, 100, 10),
               XStringFormats.TopLeft);
 
+            // Calc run TMM
             int tmmRun;
             switch (Math.Ceiling(battleMech.walk * 1.5))
             {
@@ -216,10 +231,12 @@ namespace BORST
                 default: tmmRun = 6; break;
             }
 
+            // Draw run TMM
             tf.DrawString(" / " + tmmRun.ToString(), detailFont, XBrushes.Black,
               new XRect(46, 91, 100, 10),
               XStringFormats.TopLeft);
 
+            // Calc jump TMM
             if (battleMech.jump != 0)
             {
                 int tmmJump;
@@ -265,11 +282,14 @@ namespace BORST
                     default: tmmJump = 6; break;
                 }
                 tmmJump += 1;
+
+                // Draw jump TMM
                 tf.DrawString(" / " + tmmJump.ToString(), detailFont, XBrushes.Black,
                   new XRect(61, 91, 100, 10),
                   XStringFormats.TopLeft);
             }
 
+            // Draw weapon list
             string allWeapons = "";
             foreach (Weapon weapon in battleMech.weapons)
             {
@@ -279,6 +299,7 @@ namespace BORST
               new XRect(16, 124, 250, 100),
               XStringFormats.TopLeft);
 
+            // Draw equipment list
             string allEquipment = "";
             foreach (Equipment equip in battleMech.equip)
             {
@@ -288,6 +309,7 @@ namespace BORST
               new XRect(55, 273, 180, 60),
               XStringFormats.TopLeft);
 
+            // Calc melee damage
             string punchKick = "";
             switch (battleMech.mass)
             {
@@ -322,6 +344,8 @@ namespace BORST
                     break;
 
             }
+
+            // Draw melee damage
             tf.DrawString(punchKick, weaponFont, XBrushes.Black,
               new XRect(86, 254, 100, 10),
               XStringFormats.TopLeft);
@@ -333,9 +357,11 @@ namespace BORST
             int LLArmorPips = 0;
             int RLArmorPips = 0;
 
+            // Calc head armor
             HDArmorPips = (int)Math.Floor(battleMech.armorHD / 2.0);
             if (HDArmorPips == 0) HDArmorPips = 1;
-            // 1-4
+            
+            // Draw head armor
             switch(HDArmorPips)
             {
                 case 1:
@@ -351,9 +377,12 @@ namespace BORST
                     DrawImage(gfx, "data\\pipsHD\\HD4.png", 374, 75, 25, 14);
                     break;
             }
-            // 1-21
+            
+            // Calc torso armor
             TArmorPips = (int)Math.Round((battleMech.armorCT + battleMech.armorLT + battleMech.armorRT) / 6.0, 0, MidpointRounding.AwayFromZero);
             if (TArmorPips == 0) TArmorPips = 1;
+
+            // Draw torso armor
             switch (TArmorPips)
             {
                 case 1:
@@ -422,9 +451,11 @@ namespace BORST
                     // ...
             }
 
-            // 1-10
+            // Calc rear torso armor
             RTArmorPips = (int)Math.Round((battleMech.armorCTR + battleMech.armorLTR + battleMech.armorRTR) / 6.0, 0, MidpointRounding.AwayFromZero);
             if (RTArmorPips == 0) RTArmorPips = 1;
+            
+            // Draw rear torso armor
             switch (RTArmorPips)
             {
                 case 1:
@@ -459,9 +490,11 @@ namespace BORST
                     break;
                     // ...
             }
-            // 1-11
+            // Calc left arm armor
             LAArmorPips = (int)Math.Floor((battleMech.armorLA + 1) / 3.0);
             if (LAArmorPips == 0) LAArmorPips = 1;
+            
+            // Draw left arm armor
             switch (LAArmorPips)
             {
                 case 1:
@@ -499,9 +532,12 @@ namespace BORST
                     break;
                     // ...
             }
-            // 1-11
+
+            // Calc right arm armor
             RAArmorPips = (int)Math.Floor((battleMech.armorRA + 1) / 3.0);
             if (RAArmorPips == 0) RAArmorPips = 1;
+            
+            // Draw right arm armor
             switch (RAArmorPips)
             {
                 case 1:
@@ -539,9 +575,12 @@ namespace BORST
                     break;
                     // ...
             }
-            // 1-14
+
+            // Calc left leg armor
             LLArmorPips = (int)Math.Floor((battleMech.armorLL + 1) / 3.0);
             if (LLArmorPips == 0) LLArmorPips = 1;
+            
+            // Draw left leg armor
             switch (LLArmorPips)
             {
                 case 1:
@@ -586,11 +625,13 @@ namespace BORST
                 case 14:
                     DrawImage(gfx, "data\\pipsLL\\LL14.png", 336, 222, 26, 47);
                     break;
-                    // ...
             }
-            // 1-14
+
+            // Calc right leg armor
             RLArmorPips = (int)Math.Floor((battleMech.armorRL + 1) / 3.0);
             if (RLArmorPips == 0) RLArmorPips = 1;
+            
+            // Draw right leg armor
             switch (RLArmorPips)
             {
                 case 1:
@@ -638,6 +679,7 @@ namespace BORST
                     // ...
             }
 
+            // Save and close
             document.Save(filename);
             document.Close();
 
@@ -684,10 +726,13 @@ namespace BORST
             battleMech.armorLL = int.Parse(textBoxArmorLL.Text);
             battleMech.armorRL = int.Parse(textBoxArmorRL.Text);
 
+            // Populate weapon list from GUI listbox
             foreach (Weapon weapon in listBoxWeapon.Items)
             {
                 battleMech.weapons.Add(weapon);
             }
+
+            // Populate equipment list from GUI listbox
             foreach (Equipment equip in listBoxEquip.Items)
             {
                 battleMech.equip.Add(equip);
@@ -938,7 +983,9 @@ namespace BORST
         {
             switch (comboBoxEquipment.Text)
             {
+                
                 case "Ammo":
+                    // If ammo is selected, populate subtypes
                     List<string> ammoList = new List<string> {
                         "LRM - 5",
                         "LRM - 10",
@@ -971,8 +1018,8 @@ namespace BORST
                         comboBoxEquipmentSubtype.Items.Add(ammo);
                     }
                     break;
-                case "CASE": comboBoxEquipmentSubtype.Items.Clear(); break;
 
+                case "CASE": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
                 case "CASE II": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
                 case "AMS": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
                 case "TAG": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
@@ -983,7 +1030,9 @@ namespace BORST
                 case "AES": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
                 case "Partial Wing": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
                 case "Targeting Computer": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
+                
                 case "Electronic Warfare Equipment":
+                    // If ECM is selected, populate subtypes
                     List<string> ECMList = new List<string> {
                         "Guardian",
                         "Angel"
@@ -995,6 +1044,7 @@ namespace BORST
                         comboBoxEquipmentSubtype.Items.Add(ecm);
                     }
                     break;
+
                 case "PPC Capacitor": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
                 case "Artemis IV": comboBoxEquipmentSubtype.Items.Clear(); comboBoxEquipmentSubtype.Enabled = false; break;
             }
