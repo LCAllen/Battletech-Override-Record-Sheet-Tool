@@ -84,13 +84,19 @@
             buttonRemoveEquipment = new Button();
             buttonRemoveWeapon = new Button();
             comboBoxEquipmentSubtype = new ComboBox();
+            label1 = new Label();
+            labelBatchLoad = new Label();
+            labelBatchGenerate = new Label();
+            buttonBatchLoad = new Button();
+            buttonBatchGenerate = new Button();
+            textBoxBatchLoad = new TextBox();
             SuspendLayout();
             // 
             // buttonGenerate
             // 
-            buttonGenerate.Location = new Point(973, 675);
+            buttonGenerate.Location = new Point(969, 554);
             buttonGenerate.Name = "buttonGenerate";
-            buttonGenerate.Size = new Size(75, 23);
+            buttonGenerate.Size = new Size(79, 23);
             buttonGenerate.TabIndex = 1;
             buttonGenerate.Text = "Generate";
             buttonGenerate.UseVisualStyleBackColor = true;
@@ -572,11 +578,74 @@
             comboBoxEquipmentSubtype.Size = new Size(221, 23);
             comboBoxEquipmentSubtype.TabIndex = 57;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(922, 536);
+            label1.Name = "label1";
+            label1.Size = new Size(126, 15);
+            label1.TabIndex = 58;
+            label1.Text = "Generate from GUI";
+            // 
+            // labelBatchLoad
+            // 
+            labelBatchLoad.AutoSize = true;
+            labelBatchLoad.Location = new Point(420, 647);
+            labelBatchLoad.Name = "labelBatchLoad";
+            labelBatchLoad.Size = new Size(77, 15);
+            labelBatchLoad.TabIndex = 59;
+            labelBatchLoad.Text = "Batch Load";
+            // 
+            // labelBatchGenerate
+            // 
+            labelBatchGenerate.AutoSize = true;
+            labelBatchGenerate.Location = new Point(943, 647);
+            labelBatchGenerate.Name = "labelBatchGenerate";
+            labelBatchGenerate.Size = new Size(105, 15);
+            labelBatchGenerate.TabIndex = 60;
+            labelBatchGenerate.Text = "Batch Generate";
+            // 
+            // buttonBatchLoad
+            // 
+            buttonBatchLoad.Location = new Point(418, 665);
+            buttonBatchLoad.Name = "buttonBatchLoad";
+            buttonBatchLoad.Size = new Size(79, 23);
+            buttonBatchLoad.TabIndex = 61;
+            buttonBatchLoad.Text = "Load";
+            buttonBatchLoad.UseVisualStyleBackColor = true;
+            buttonBatchLoad.Click += buttonBatchLoad_Click;
+            // 
+            // buttonBatchGenerate
+            // 
+            buttonBatchGenerate.Location = new Point(969, 665);
+            buttonBatchGenerate.Name = "buttonBatchGenerate";
+            buttonBatchGenerate.Size = new Size(79, 23);
+            buttonBatchGenerate.TabIndex = 62;
+            buttonBatchGenerate.Text = "Generate";
+            buttonBatchGenerate.UseVisualStyleBackColor = true;
+            buttonBatchGenerate.Click += buttonBatchGenerate_Click;
+            // 
+            // textBoxBatchLoad
+            // 
+            textBoxBatchLoad.Location = new Point(503, 665);
+            textBoxBatchLoad.Name = "textBoxBatchLoad";
+            textBoxBatchLoad.ReadOnly = true;
+            textBoxBatchLoad.Size = new Size(461, 21);
+            textBoxBatchLoad.TabIndex = 63;
+            textBoxBatchLoad.Text = "Browse for Folder Containing MegaMek MTF";
+            textBoxBatchLoad.TextAlign = HorizontalAlignment.Center;
+            // 
             // mainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1060, 710);
+            Controls.Add(textBoxBatchLoad);
+            Controls.Add(buttonBatchGenerate);
+            Controls.Add(buttonBatchLoad);
+            Controls.Add(labelBatchGenerate);
+            Controls.Add(labelBatchLoad);
+            Controls.Add(label1);
             Controls.Add(comboBoxEquipmentSubtype);
             Controls.Add(buttonRemoveWeapon);
             Controls.Add(buttonRemoveEquipment);
@@ -699,5 +768,11 @@
         private Button buttonRemoveEquipment;
         private Button buttonRemoveWeapon;
         private ComboBox comboBoxEquipmentSubtype;
+        private Label label1;
+        private Label labelBatchLoad;
+        private Label labelBatchGenerate;
+        private Button buttonBatchLoad;
+        private Button buttonBatchGenerate;
+        private TextBox textBoxBatchLoad;
     }
 }
