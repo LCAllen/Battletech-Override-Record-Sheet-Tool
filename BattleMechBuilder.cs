@@ -171,56 +171,56 @@ namespace BORST
                             case string subtype when subtype.Contains("srm-6"):
                                 sub = "SRM-6";
                                 break;
-                            case string subtype when subtype.Contains("ac/2"):
-                                sub = "AC/2";
-                                break;
-                            case string subtype when subtype.Contains("ac/5"):
-                                sub = "AC/5";
+                            case string subtype when subtype.Contains("ac/20"):
+                                sub = "AC/20";
                                 break;
                             case string subtype when subtype.Contains("ac/10"):
                                 sub = "AC/10";
                                 break;
-                            case string subtype when subtype.Contains("ac/20"):
-                                sub = "AC/20";
+                            case string subtype when subtype.Contains("ac/5"):
+                                sub = "AC/5";
                                 break;
-                            case string subtype when subtype.Contains("lb 2-x ac"):
-                                sub = "LB2-X AC";
-                                break;
-                            case string subtype when subtype.Contains("lb 5-x ac"):
-                                sub = "LB5-X AC";
-                                break;
-                            case string subtype when subtype.Contains("lb 10-x ac"):
-                                sub = "LB10-X AC";
+                            case string subtype when subtype.Contains("ac/2"):
+                                sub = "AC/2";
                                 break;
                             case string subtype when subtype.Contains("lb 20-x ac"):
                                 sub = "LB20-X AC";
                                 break;
-                            case string subtype when subtype.Contains("ultra ac/2"):
-                                sub = "UAC/2";
+                            case string subtype when subtype.Contains("lb 10-x ac"):
+                                sub = "LB10-X AC";
                                 break;
-                            case string subtype when subtype.Contains("ultra ac/5"):
-                                sub = "UAC/5";
+                            case string subtype when subtype.Contains("lb 5-x ac"):
+                                sub = "LB5-X AC";
                                 break;
-                            case string subtype when subtype.Contains("ultra ac/10"):
-                                sub = "UAC/10";
+                            case string subtype when subtype.Contains("lb 2-x ac"):
+                                sub = "LB2-X AC";
                                 break;
                             case string subtype when subtype.Contains("ultra ac/20"):
                                 sub = "UAC/20";
                                 break;
+                            case string subtype when subtype.Contains("ultra ac/10"):
+                                sub = "UAC/10";
+                                break;
+                            case string subtype when subtype.Contains("ultra ac/5"):
+                                sub = "UAC/5";
+                                break;
+                            case string subtype when subtype.Contains("ultra ac/2"):
+                                sub = "UAC/2";
+                                break;  
                             case string subtype when subtype.Contains("gauss"):
                                 sub = "Gauss";
                                 break;
                             case string subtype when subtype.Contains("ams"):
                                 sub = "AMS";
                                 break;
-                            case string subtype when subtype.Contains("arrowivammo"):
-                                sub = "Arrow IV";
-                                break;
                             case string subtype when subtype.Contains("arrowivhomingammo"):
                                 sub = "Arrow IV - Homing";
                                 break;
                             case string subtype when subtype.Contains("arrowivclusterammo"):
                                 sub = "Arrow IV - Cluster";
+                                break;
+                            case string subtype when subtype.Contains("arrowivammo"):
+                                sub = "Arrow IV";
                                 break;
                         }
                         battleMech.equip.Add(new Ammo(location, sub));

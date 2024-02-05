@@ -20,7 +20,7 @@ namespace BORST
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
-            // Create battleMech object from the GUI
+            // Load a BattleMech from the GUI, then send it to be drawn
             BattleMech battleMech = BuildBattleMechFromGUI();
             BattleMechBuilder.DrawPDFFromBattleMech(battleMech);
         }
@@ -39,10 +39,13 @@ namespace BORST
             PopulateGUIFromBattleMech(battlemech);
         }
 
+        // Create battleMech object from the GUI information
         public BattleMech BuildBattleMechFromGUI()
         {
+            // Create a blank Mech object
             BattleMech battleMech = new BattleMech();
 
+            // Set all variables
             battleMech.chassis = textBoxChassis.Text;
             battleMech.variant = textBoxVariant.Text;
             battleMech.omnimech = checkBoxOmni.Checked;
