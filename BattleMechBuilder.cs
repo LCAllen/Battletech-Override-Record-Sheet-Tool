@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Shapes;
 using static System.Windows.Forms.LinkLabel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
+using System.Windows.Shell;
+using System.Windows.Documents;
 
 namespace BORST
 {
@@ -280,6 +283,30 @@ namespace BORST
                         break;
                 }
             }
+
+            // Create a list to store the duplicate items to remove
+            List<Weapon> toRemove = new List<Weapon>();
+
+            // Create a list that contains only distinct weapons
+            List<Weapon> distinctWeapons = battleMech.weapons.GroupBy(x => x.displayName + x.location).Select(d => d.First()).ToList();
+            
+            // For each distinct weapon, count the duplicates and add the duplicates to the toRemove list
+            foreach (Weapon weapon in distinctWeapons) 
+            {
+                List<Weapon> dupes = battleMech.weapons.FindAll(x => x.displayName + x.location == weapon.displayName + weapon.location).Skip(1).ToList();
+
+                int amount = 0;
+                foreach (var dupe in dupes)
+                {
+                    amount += dupe.amount;
+                    toRemove.Add(dupe);
+                }
+                // Update the total count of the weapon
+                weapon.amount += amount;
+            }
+            // Create a new list with the updated count and removed dupes
+            List<Weapon> result = battleMech.weapons.Except(toRemove).ToList();
+            battleMech.weapons = result;
         }
 
         private static void ParseAndAddWeapons(BattleMech battleMech, StreamReader reader, int numWeapons)
@@ -287,9 +314,18 @@ namespace BORST
             for(int i = 0;i < numWeapons;i++) 
             {
                 var line = reader.ReadLine();
-                string weapon = line.Split(',')[0].Replace(",", "").ToLower();
+
+                int amount = 1;
+                if (line != null && Char.IsNumber(line[0]))
+                {
+                    amount = int.Parse(line[0].ToString());
+                    line = line.Remove(0, 1);
+                }
+
+                string weapon = line.Split(',')[0].Replace(",", "").ToLower().Replace(" ", "").Replace("is", "").Replace("clan", "");
                 string location = line.Split(',')[1].Replace(" ", "").ToLower();
                 string locationCode = "";
+                
                 switch (location)
                 {
                     case "leftarm":
@@ -319,139 +355,139 @@ namespace BORST
                 }
                 switch (weapon)
                 {
-                    case "machine gun":
-                        if(battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new MG(locationCode));
-                        else battleMech.weapons.Add(new cMG(locationCode));
+                    case "machinegun":
+                        if(battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new MG(amount, locationCode));
+                        else battleMech.weapons.Add(new cMG(amount, locationCode));
                         break;
                     case "ac/2":
-                        battleMech.weapons.Add(new AC2(locationCode));
+                        battleMech.weapons.Add(new AC2(amount, locationCode));
                         break;
                     case "ac/5":
-                        battleMech.weapons.Add(new AC5(locationCode));
+                        battleMech.weapons.Add(new AC5(amount, locationCode));
                         break;
                     case "ac/10":
-                        battleMech.weapons.Add(new AC10(locationCode));
+                        battleMech.weapons.Add(new AC10(amount, locationCode));
                         break;
                     case "ac/20":
-                        battleMech.weapons.Add(new AC20(locationCode));
+                        battleMech.weapons.Add(new AC20(amount, locationCode));
                         break;
                     case "autocannon/2":
-                        battleMech.weapons.Add(new AC2(locationCode));
+                        battleMech.weapons.Add(new AC2(amount, locationCode));
                         break;
                     case "autocannon/5":
-                        battleMech.weapons.Add(new AC5(locationCode));
+                        battleMech.weapons.Add(new AC5(amount, locationCode));
                         break;
                     case "autocannon/10":
-                        battleMech.weapons.Add(new AC10(locationCode));
+                        battleMech.weapons.Add(new AC10(amount, locationCode));
                         break;
                     case "autocannon/20":
-                        battleMech.weapons.Add(new AC20(locationCode));
+                        battleMech.weapons.Add(new AC20(amount, locationCode));
                         break;
-                    case "small laser":
-                        battleMech.weapons.Add(new SLas(locationCode));
+                    case "smalllaser":
+                        battleMech.weapons.Add(new SLas(amount, locationCode));
                         break;
-                    case "medium laser":
-                        battleMech.weapons.Add(new MLas(locationCode));
+                    case "mediumlaser":
+                        battleMech.weapons.Add(new MLas(amount, locationCode));
                         break;
-                    case "large laser":
-                        battleMech.weapons.Add(new LLas(locationCode));
+                    case "largelaser":
+                        battleMech.weapons.Add(new LLas(amount, locationCode));
                         break;
-                    case "small pulse laser":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new SpLas(locationCode));
-                        else battleMech.weapons.Add(new cSpLas(locationCode));
+                    case "smallpulselaser":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new SpLas(amount, locationCode));
+                        else battleMech.weapons.Add(new cSpLas(amount, locationCode));
                         break;
-                    case "medium pulse laser":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new MpLas(locationCode));
-                        else battleMech.weapons.Add(new cMpLas(locationCode));
+                    case "mediumpulselaser":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new MpLas(amount, locationCode));
+                        else battleMech.weapons.Add(new cMpLas(amount, locationCode));
                         break;
-                    case "large pulse laser":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new LpLas(locationCode));
-                        else battleMech.weapons.Add(new cLpLas(locationCode));
+                    case "largepulselaser":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new LpLas(amount, locationCode));
+                        else battleMech.weapons.Add(new cLpLas(amount, locationCode));
                         break;
-                    case "er small laser":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new erSLas(locationCode));
-                        else battleMech.weapons.Add(new cerSLas(locationCode));
+                    case "ersmalllaser":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new erSLas(amount, locationCode));
+                        else battleMech.weapons.Add(new cerSLas(amount, locationCode));
                         break;
-                    case "er medium laser":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new erMLas(locationCode));
-                        else battleMech.weapons.Add(new cerMLas(locationCode));
+                    case "ermediumlaser":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new erMLas(amount, locationCode));
+                        else battleMech.weapons.Add(new cerMLas(amount, locationCode));
                         break;
-                    case "er large laser":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new erLLas(locationCode));
-                        else battleMech.weapons.Add(new cerLLas(locationCode));
+                    case "erlargelaser":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new erLLas(amount, locationCode));
+                        else battleMech.weapons.Add(new cerLLas(amount, locationCode));
                         break;
                     case "ppc":
-                        battleMech.weapons.Add(new PPC(locationCode));
+                        battleMech.weapons.Add(new PPC(amount, locationCode));
                         break;
-                    case "er ppc":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new erPPC(locationCode));
-                        else battleMech.weapons.Add(new cerPPC(locationCode));
+                    case "erppc":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new erPPC(amount, locationCode));
+                        else battleMech.weapons.Add(new cerPPC(amount, locationCode));
                         break;
-                    case "gauss rifle":
-                        battleMech.weapons.Add(new Gauss(locationCode));
+                    case "gaussrifle":
+                        battleMech.weapons.Add(new Gauss(amount, locationCode));
                         break;
-                    case "arrow iv":
-                        battleMech.weapons.Add(new ArrowIV(locationCode));
+                    case "arrowiv":
+                        battleMech.weapons.Add(new ArrowIV(amount, locationCode));
                         break;
-                    case "lrm 5":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new LRM5(locationCode));
-                        else battleMech.weapons.Add(new cLRM5(locationCode));
+                    case "lrm5":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new LRM5(amount, locationCode));
+                        else battleMech.weapons.Add(new cLRM5(amount, locationCode));
                         break;
-                    case "lrm 10":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new LRM10(locationCode));
-                        else battleMech.weapons.Add(new cLRM10(locationCode));
+                    case "lrm10":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new LRM10(amount, locationCode));
+                        else battleMech.weapons.Add(new cLRM10(amount, locationCode));
                         break;
-                    case "lrm 15":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new LRM15(locationCode));
-                        else battleMech.weapons.Add(new cLRM15(locationCode));
+                    case "lrm15":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new LRM15(amount, locationCode));
+                        else battleMech.weapons.Add(new cLRM15(amount, locationCode));
                         break;
-                    case "lrm 20":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new LRM20(locationCode));
-                        else battleMech.weapons.Add(new cLRM20(locationCode));
+                    case "lrm20":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new LRM20(amount, locationCode));
+                        else battleMech.weapons.Add(new cLRM20(amount, locationCode));
                         break;
-                    case "srm 2":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new SRM2(locationCode));
-                        else battleMech.weapons.Add(new cSRM2(locationCode));
+                    case "srm2":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new SRM2(amount, locationCode));
+                        else battleMech.weapons.Add(new cSRM2(amount, locationCode));
                         break;
-                    case "srm 4":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new SRM4(locationCode));
-                        else battleMech.weapons.Add(new cSRM4(locationCode));
+                    case "srm4":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new SRM4(amount, locationCode));
+                        else battleMech.weapons.Add(new cSRM4(amount, locationCode));
                         break;
-                    case "srm 6":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new SRM6(locationCode));
-                        else battleMech.weapons.Add(new cSRM6(locationCode));
+                    case "srm6":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new SRM6(amount, locationCode));
+                        else battleMech.weapons.Add(new cSRM6(amount, locationCode));
                         break;
-                    case "lb 2-x ac":
-                        battleMech.weapons.Add(new LB2X(locationCode));
+                    case "lb2-xac":
+                        battleMech.weapons.Add(new LB2X(amount, locationCode));
                         break;
-                    case "lb 5-x ac":
-                        battleMech.weapons.Add(new LB5X(locationCode));
+                    case "lb5-xac":
+                        battleMech.weapons.Add(new LB5X(amount, locationCode));
                         break;
-                    case "lb 10-x ac":
-                        battleMech.weapons.Add(new LB10X(locationCode));
+                    case "lb10-xac":
+                        battleMech.weapons.Add(new LB10X(amount, locationCode));
                         break;
-                    case "lb 20-c ac":
-                        battleMech.weapons.Add(new LB20X(locationCode));
+                    case "lb20-xac":
+                        battleMech.weapons.Add(new LB20X(amount, locationCode));
                         break;
-                    case "ultra ac/2":
-                        battleMech.weapons.Add(new UAC2(locationCode));
+                    case "ultraac/2":
+                        battleMech.weapons.Add(new UAC2(amount, locationCode));
                         break;
-                    case "ultra ac/5":
-                        battleMech.weapons.Add(new UAC5(locationCode));
+                    case "ultraac/5":
+                        battleMech.weapons.Add(new UAC5(amount, locationCode));
                         break;
-                    case "ultra ac/10":
-                        battleMech.weapons.Add(new UAC10(locationCode));
+                    case "ultraac/10":
+                        battleMech.weapons.Add(new UAC10(amount, locationCode));
                         break;
-                    case "ultra ac/20":
-                        battleMech.weapons.Add(new UAC20(locationCode));
+                    case "ultraac/20":
+                        battleMech.weapons.Add(new UAC20(amount, locationCode));
                         break;
                     case "flamer":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new Flamer(locationCode));
-                        else battleMech.weapons.Add(new cFlamer(locationCode));
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new Flamer(amount, locationCode));
+                        else battleMech.weapons.Add(new cFlamer(amount, locationCode));
                         break;
-                    case "er flamer":
-                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new erFlamer(locationCode));
-                        else battleMech.weapons.Add(new erFlamer(locationCode));
+                    case "erflamer":
+                        if (battleMech.techBase == "Inner Sphere") battleMech.weapons.Add(new erFlamer(amount, locationCode));
+                        else battleMech.weapons.Add(new erFlamer(amount, locationCode));
                         break;
                 }
             }

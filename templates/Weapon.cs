@@ -4,19 +4,31 @@ using System.Transactions;
 
 public abstract class Weapon
 {
-    protected string displayName = "";
-    protected string damage = "";
-	protected int heat;
-	protected string location = "";
-	protected string pointBlankRange = "";
-	protected string shortRange = "";
-	protected string mediumRange = "";
-	protected string longRange = "";
-	protected string extraLongRange = "";
+    internal int amount = 0;
+    internal string displayName = "";
+    internal string damage = "";
+    internal int heat = 0;
+    internal string location = "";
+    internal string pointBlankRange = "";
+    internal string shortRange = "";
+    internal string mediumRange = "";
+    internal string longRange = "";
+    internal string extraLongRange = "";
 
     public override string ToString()
     {
-        return (this.displayName.PadRight(14)
+        if (this.amount == 1)
+            return (this.displayName.PadRight(14)
+                + (this.damage + '/' + this.heat).PadRight(10, ' ')
+                + this.location.ToUpper().PadRight(8)
+                + this.pointBlankRange.PadLeft(2)
+                + ' ' + this.shortRange.PadLeft(2)
+                + ' ' + this.mediumRange.PadLeft(2)
+                + ' ' + this.longRange.PadLeft(2)
+                + ' ' + this.extraLongRange.PadLeft(2));
+        else 
+        return (this.amount + " "
+            + this.displayName.PadRight(12)
             + (this.damage + '/' + this.heat).PadRight(10, ' ')
             + this.location.ToUpper().PadRight(8)
             + this.pointBlankRange.PadLeft(2)
@@ -30,8 +42,9 @@ public abstract class Weapon
 // MG (AI)		1/0	0/0/-/-/-
 internal class MG : Weapon
 {
-	internal MG(string loc)
+	internal MG(int amount, string loc)
 	{
+        this.amount = amount;
         this.displayName = "MG (AI)";
 		this.damage = "1";
 		this.heat = 0;
@@ -47,8 +60,9 @@ internal class MG : Weapon
 // AC/2		1/0	4/2/0/2/4
 internal class AC2 : Weapon
 {
-    internal AC2(string loc)
+    internal AC2(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "AC/2";
         this.damage = "1";
         this.heat = 0;
@@ -64,8 +78,9 @@ internal class AC2 : Weapon
 // AC/5		2/0	2/0/2/4/-
 internal class AC5 : Weapon
 {
-    internal AC5(string loc)
+    internal AC5(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "AC/5";
         this.damage = "2";
         this.heat = 0;
@@ -81,8 +96,9 @@ internal class AC5 : Weapon
 // AC/10		4/1	0/0/2/4/-
 internal class AC10 : Weapon
 {
-    internal AC10(string loc)
+    internal AC10(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "AC/10";
         this.damage = "4";
         this.heat = 1;
@@ -98,8 +114,9 @@ internal class AC10 : Weapon
 // AC/20		7/1	0/0/2/-/-
 internal class AC20 : Weapon
 {
-    internal AC20(string loc)
+    internal AC20(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "AC/20";
         this.damage = "7";
         this.heat = 1;
@@ -115,8 +132,9 @@ internal class AC20 : Weapon
 // UAC/2 (RF)	1/0	2/0/0/2/2
 internal class UAC2 : Weapon
 {
-    internal UAC2(string loc)
+    internal UAC2(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "UAC/2 (RF)";
         this.damage = "1";
         this.heat = 0;
@@ -132,8 +150,9 @@ internal class UAC2 : Weapon
 // UAC/5 (RF)	2/0	0/0/0/2/4
 internal class UAC5 : Weapon
 {
-    internal UAC5(string loc)
+    internal UAC5(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "UAC/5 (RF)";
         this.damage = "2";
         this.heat = 0;
@@ -149,8 +168,9 @@ internal class UAC5 : Weapon
 // UAC/10 (RF)	4/1	0/0/2/4/-
 internal class UAC10 : Weapon
 {
-    internal UAC10(string loc)
+    internal UAC10(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "UAC/10 (RF)";
         this.damage = "4";
         this.heat = 1;
@@ -166,8 +186,9 @@ internal class UAC10 : Weapon
 // UAC/20 (RF)	7/1	0/0/2/-/-
 internal class UAC20 : Weapon
 {
-    internal UAC20(string loc)
+    internal UAC20(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "UAC/20 (RF)";
         this.damage = "7";
         this.heat = 1;
@@ -183,8 +204,9 @@ internal class UAC20 : Weapon
 // LB 2-X		1/0	4/2/0/2/2
 internal class LB2X : Weapon
 {
-    internal LB2X(string loc)
+    internal LB2X(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "LB 2-X";
         this.damage = "1";
         this.heat = 0;
@@ -200,8 +222,9 @@ internal class LB2X : Weapon
 // LB 5-X	     1+C1/0	2/0/0/2/4
 internal class LB5X : Weapon
 {
-    internal LB5X(string loc)
+    internal LB5X(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "LB 5-X";
         this.damage = "1+C1";
         this.heat = 0;
@@ -217,8 +240,9 @@ internal class LB5X : Weapon
 // LB 10-X     1+C3/0	0/0/2/4/-
 internal class LB10X : Weapon
 {
-    internal LB10X(string loc)
+    internal LB10X(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "LB 10-X";
         this.damage = "1+C3";
         this.heat = 0;
@@ -234,8 +258,9 @@ internal class LB10X : Weapon
 // LB 20-X     1+C6/1	0/0/2/-/-
 internal class LB20X : Weapon
 {
-    internal LB20X(string loc)
+    internal LB20X(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "LB 20-X";
         this.damage = "1+C6";
         this.heat = 1;
@@ -251,8 +276,9 @@ internal class LB20X : Weapon
 // SRM-2	  1+M1(2)/0	0/0/2/-/-
 internal class SRM2 : Weapon
 {
-    internal SRM2(string loc)
+    internal SRM2(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "SRM-2";
         this.damage = "1+M1(2)";
         this.heat = 0;
@@ -268,8 +294,9 @@ internal class SRM2 : Weapon
 // SRM-4	  1+M1(3)/1	0/0/2/-/-
 internal class SRM4 : Weapon
 {
-    internal SRM4(string loc)
+    internal SRM4(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "SRM-4";
         this.damage = "1+M1(3)";
         this.heat = 1;
@@ -285,8 +312,9 @@ internal class SRM4 : Weapon
 // SRM-6	  1+M2(4)/1	0/0/2/-/-
 internal class SRM6 : Weapon
 {
-    internal SRM6(string loc)
+    internal SRM6(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "SRM-6";
         this.damage = "1+M2(4)";
         this.heat = 1;
@@ -302,8 +330,9 @@ internal class SRM6 : Weapon
 // SSRM-2  1+M1(2)/0	0/0/2/-/-
 internal class StreakSRM2 : Weapon
 {
-    internal StreakSRM2(string loc)
+    internal StreakSRM2(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "Streak SRM-2";
         this.damage = "1+M1(2)";
         this.heat = 0;
@@ -319,8 +348,9 @@ internal class StreakSRM2 : Weapon
 // SSRM-4  1+M1(3)/1	0/0/2/-/-
 internal class StreakSRM4 : Weapon
 {
-    internal StreakSRM4(string loc)
+    internal StreakSRM4(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "Streak SRM-4";
         this.damage = "1+M1(3)";
         this.heat = 1;
@@ -336,8 +366,9 @@ internal class StreakSRM4 : Weapon
 // SSRM-6  1+M2(4)/1	0/0/2/-/-
 internal class StreakSRM6 : Weapon
 {
-    internal StreakSRM6(string loc)
+    internal StreakSRM6(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "Streak SRM-6";
         this.damage = "1+M2(4)";
         this.heat = 1;
@@ -353,8 +384,9 @@ internal class StreakSRM6 : Weapon
 // LRM-5	  1+M1(2)/0	4/2/0/2/4
 internal class LRM5 : Weapon
 {
-    internal LRM5(string loc)
+    internal LRM5(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "LRM-5";
         this.damage = "1+M1(2)";
         this.heat = 0;
@@ -370,8 +402,9 @@ internal class LRM5 : Weapon
 // LRM-10	  1+M2(4)/1	4/2/0/2/4
 internal class LRM10 : Weapon
 {
-    internal LRM10(string loc)
+    internal LRM10(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "LRM-10";
         this.damage = "1+M2(4)";
         this.heat = 1;
@@ -387,8 +420,9 @@ internal class LRM10 : Weapon
 // LRM-15	  1+M3(5)/1	4/2/0/2/4
 internal class LRM15 : Weapon
 {
-    internal LRM15(string loc)
+    internal LRM15(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "LRM-15";
         this.damage = "1+M3(5)";
         this.heat = 1;
@@ -404,8 +438,9 @@ internal class LRM15 : Weapon
 // LRM-20	  2+M3(7)/1	4/2/0/2/4
 internal class LRM20 : Weapon
 {
-    internal LRM20(string loc)
+    internal LRM20(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "LRM-20";
         this.damage = "2+M3(7)";
         this.heat = 1;
@@ -421,8 +456,9 @@ internal class LRM20 : Weapon
 // S Laser		1/0	0/0/-/-/-
 internal class SLas : Weapon
 {
-    internal SLas(string loc)
+    internal SLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "S Las";
         this.damage = "1";
         this.heat = 0;
@@ -438,8 +474,9 @@ internal class SLas : Weapon
 // M Laser		2/1	0/0/2/-/-
 internal class MLas : Weapon
 {
-    internal MLas(string loc)
+    internal MLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "M Las";
         this.damage = "2";
         this.heat = 1;
@@ -455,8 +492,9 @@ internal class MLas : Weapon
 // L Laser		3/2	0/0/2/4/-
 internal class LLas : Weapon
 {
-    internal LLas(string loc)
+    internal LLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "L Las";
         this.damage = "3";
         this.heat = 2;
@@ -472,8 +510,9 @@ internal class LLas : Weapon
 // ER S Laser	2/0	0/0/4/-/-
 internal class erSLas : Weapon
 {
-    internal erSLas(string loc)
+    internal erSLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "ER S Las";
         this.damage = "2";
         this.heat = 0;
@@ -489,8 +528,9 @@ internal class erSLas : Weapon
 // ER M Laser	3/1	0/0/2/4/-
 internal class erMLas : Weapon
 {
-    internal erMLas(string loc)
+    internal erMLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "ER M Las";
         this.damage = "3";
         this.heat = 1;
@@ -506,8 +546,9 @@ internal class erMLas : Weapon
 // ER L Laser	4/2	0/0/0/2/2
 internal class erLLas : Weapon
 {
-    internal erLLas(string loc)
+    internal erLLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "ER L Las";
         this.damage = "4";
         this.heat = 2;
@@ -523,8 +564,9 @@ internal class erLLas : Weapon
 // SP Laser (AI)	1/0    -2/-2/2/-/-
 internal class SpLas : Weapon
 {
-    internal SpLas(string loc)
+    internal SpLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "S Pul Las (AI)";
         this.damage = "1";
         this.heat = 0;
@@ -540,8 +582,9 @@ internal class SpLas : Weapon
 // MP Laser	3/1    -2/-2/0/-/-
 internal class MpLas : Weapon
 {
-    internal MpLas(string loc)
+    internal MpLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "M Pul Las";
         this.damage = "3";
         this.heat = 1;
@@ -557,8 +600,9 @@ internal class MpLas : Weapon
 // LP Laser	4/2    -2/-2/-2/0/2
 internal class LpLas : Weapon
 {
-    internal LpLas(string loc)
+    internal LpLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "L Pul Las";
         this.damage = "4";
         this.heat = 2;
@@ -574,8 +618,9 @@ internal class LpLas : Weapon
 // PPC		4/2	2/0/2/4/-
 internal class PPC : Weapon
 {
-    internal PPC(string loc)
+    internal PPC(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "PPC";
         this.damage = "4";
         this.heat = 2;
@@ -591,8 +636,9 @@ internal class PPC : Weapon
 // ER PPC		5/3	0/0/0/2/4
 internal class erPPC : Weapon
 {
-    internal erPPC(string loc)
+    internal erPPC(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "ER PPC";
         this.damage = "5";
         this.heat = 3;
@@ -608,8 +654,9 @@ internal class erPPC : Weapon
 // cFlamer	     1+H1/1	0/0/-/-/-
 internal class Flamer : Weapon
 {
-    internal Flamer(string loc)
+    internal Flamer(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "Flamer";
         this.damage = "1+H1";
         this.heat = 1;
@@ -625,8 +672,9 @@ internal class Flamer : Weapon
 // erFlamer	     1+H1/1	0/0/-/-/-
 internal class erFlamer : Weapon
 {
-    internal erFlamer(string loc)
+    internal erFlamer(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "ER Flamer";
         this.damage = "1+H1";
         this.heat = 1;
@@ -642,8 +690,9 @@ internal class erFlamer : Weapon
 // Gauss	5/0	2/0/0/2/4
 internal class Gauss : Weapon
 {
-    internal Gauss(string loc)
+    internal Gauss(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "Gauss";
         this.damage = "5";
         this.heat = 0;
@@ -659,8 +708,9 @@ internal class Gauss : Weapon
 // Arrow IV	0/0	0/0/0/0/0
 internal class ArrowIV : Weapon
 {
-    internal ArrowIV(string loc)
+    internal ArrowIV(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "Arrow IV";
         this.damage = "0";
         this.heat = 0;
@@ -676,8 +726,9 @@ internal class ArrowIV : Weapon
 // cMG (AI)	1/0	0/0/-/-/-
 internal class cMG : Weapon
 {
-	internal cMG(string loc)
+	internal cMG(int amount, string loc)
 	{
+        this.amount = amount;
         this.displayName = "cMG (AI)";
 		this.damage = "1";
 		this.heat = 0;
@@ -693,8 +744,9 @@ internal class cMG : Weapon
 // cUAC/2 (RF)	1/0	2/0/0/2/2
 internal class cUAC2 : Weapon
 {
-	internal cUAC2(string loc)
+	internal cUAC2(int amount, string loc)
 	{
+        this.amount = amount;
         this.displayName = "cUAC/2";
 		this.damage = "1";
 		this.heat = 0;
@@ -710,8 +762,9 @@ internal class cUAC2 : Weapon
 // cUAC/5 (RF)	2/0	0/0/0/2/4
 internal class cUAC5 : Weapon
 {
-	internal cUAC5(string loc)
+	internal cUAC5(int amount, string loc)
 	{
+        this.amount = amount;
         this.displayName = "cUAC/5";
 		this.damage = "2";
 		this.heat = 0;
@@ -727,8 +780,9 @@ internal class cUAC5 : Weapon
 // cUAC/10 (RF)	4/1	0/0/2/4/-
 internal class cUAC10 : Weapon
 {
-	internal cUAC10(string loc)
+	internal cUAC10(int amount, string loc)
 	{
+        this.amount = amount;
         this.displayName = "cUAC/10";
 		this.damage = "4";
 		this.heat = 1;
@@ -744,8 +798,9 @@ internal class cUAC10 : Weapon
 // cUAC/20 (RF)	7/1	0/0/2/-/-
 internal class cUAC20 : Weapon
 {
-	internal cUAC20(string loc)
+	internal cUAC20(int amount, string loc)
 	{
+        this.amount = amount;
         this.displayName = "cUAC/20";
 		this.damage = "7";
 		this.heat = 1;
@@ -760,8 +815,9 @@ internal class cUAC20 : Weapon
 // cSRM-2	  1+M1(2)/0	0/0/2/-/-
 internal class cSRM2 : Weapon
 {
-    internal cSRM2(string loc)
+    internal cSRM2(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cSRM-2";
         this.damage = "1+M1(2)";
         this.heat = 0;
@@ -777,8 +833,9 @@ internal class cSRM2 : Weapon
 // cSRM-4	  1+M1(3)/1	0/0/2/-/-
 internal class cSRM4 : Weapon
 {
-    internal cSRM4(string loc)
+    internal cSRM4(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cSRM-4";
         this.damage = "1+M1(3)";
         this.heat = 1;
@@ -794,8 +851,9 @@ internal class cSRM4 : Weapon
 // cSRM-6	  1+M2(4)/1	0/0/2/-/-
 internal class cSRM6 : Weapon
 {
-    internal cSRM6(string loc)
+    internal cSRM6(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cSRM-6";
         this.damage = "1+M2(4)";
         this.heat = 1;
@@ -811,8 +869,9 @@ internal class cSRM6 : Weapon
 // cSSRM-2  1+M1(2)/0	0/0/2/-/-
 internal class cStreakSRM2 : Weapon
 {
-    internal cStreakSRM2(string loc)
+    internal cStreakSRM2(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cStreak SRM-2";
         this.damage = "1+M1(2)";
         this.heat = 0;
@@ -828,8 +887,9 @@ internal class cStreakSRM2 : Weapon
 // cSSRM-4  1+M1(3)/1	0/0/2/-/-
 internal class cStreakSRM4 : Weapon
 {
-    internal cStreakSRM4(string loc)
+    internal cStreakSRM4(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cStreak SRM-4";
         this.damage = "1+M1(3)";
         this.heat = 1;
@@ -845,8 +905,9 @@ internal class cStreakSRM4 : Weapon
 // cSSRM-6  1+M2(4)/1	0/0/2/-/-
 internal class cStreakSRM6 : Weapon
 {
-    internal cStreakSRM6(string loc)
+    internal cStreakSRM6(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cStreak SRM-6";
         this.damage = "1+M2(4)";
         this.heat = 1;
@@ -861,8 +922,9 @@ internal class cStreakSRM6 : Weapon
 // cLRM-5	  1+M1(2)/0	0/0/0/2/4
 internal class cLRM5 : Weapon
 {
-    internal cLRM5(string loc)
+    internal cLRM5(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cLRM-5";
         this.damage = "1+M1(2)";
         this.heat = 0;
@@ -878,8 +940,9 @@ internal class cLRM5 : Weapon
 // cLRM-10	  1+M2(4)/1	0/0/0/2/4
 internal class cLRM10 : Weapon
 {
-    internal cLRM10(string loc)
+    internal cLRM10(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cLRM-10";
         this.damage = "1+M2(4)";
         this.heat = 1;
@@ -895,8 +958,9 @@ internal class cLRM10 : Weapon
 // cLRM-15	  1+M3(5)/1	0/0/0/2/4
 internal class cLRM15 : Weapon
 {
-    internal cLRM15(string loc)
+    internal cLRM15(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cLRM-15";
         this.damage = "1+M3(5)";
         this.heat = 1;
@@ -912,8 +976,9 @@ internal class cLRM15 : Weapon
 // cLRM-20	  2+M3(7)/1	0/0/0/2/4
 internal class cLRM20 : Weapon
 {
-    internal cLRM20(string loc)
+    internal cLRM20(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cLRM-20";
         this.damage = "2+M3(7)";
         this.heat = 1;
@@ -929,8 +994,9 @@ internal class cLRM20 : Weapon
 // cER S Laser	2/0	0/0/4/-/-
 internal class cerSLas : Weapon
 {
-    internal cerSLas(string loc)
+    internal cerSLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cER S Las";
         this.damage = "2";
         this.heat = 0;
@@ -946,8 +1012,9 @@ internal class cerSLas : Weapon
 // cER M Laser	3/1	0/0/2/4/-
 internal class cerMLas : Weapon
 {
-    internal cerMLas(string loc)
+    internal cerMLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cER M Las";
         this.damage = "3";
         this.heat = 1;
@@ -963,8 +1030,9 @@ internal class cerMLas : Weapon
 // cER L Laser	4/2	0/0/0/2/2
 internal class cerLLas : Weapon
 {
-    internal cerLLas(string loc)
+    internal cerLLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cER L Las";
         this.damage = "4";
         this.heat = 2;
@@ -980,8 +1048,9 @@ internal class cerLLas : Weapon
 // cSP Laser (AI)	1/0    -2/-2/2/-/-
 internal class cSpLas : Weapon
 {
-    internal cSpLas(string loc)
+    internal cSpLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cS Pul Las";
         this.damage = "1";
         this.heat = 0;
@@ -997,8 +1066,9 @@ internal class cSpLas : Weapon
 // cMP Laser	3/1    -2/-2/0/-/-
 internal class cMpLas : Weapon
 {
-    internal cMpLas(string loc)
+    internal cMpLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cM Pul Las";
         this.damage = "3";
         this.heat = 1;
@@ -1014,8 +1084,9 @@ internal class cMpLas : Weapon
 // cLP Laser	4/2    -2/-2/-2/0/2
 internal class cLpLas : Weapon
 {
-    internal cLpLas(string loc)
+    internal cLpLas(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cL Pul Las";
         this.damage = "4";
         this.heat = 2;
@@ -1031,8 +1102,9 @@ internal class cLpLas : Weapon
 // cER PPC		5/3	0/0/0/2/4
 internal class cerPPC : Weapon
 {
-    internal cerPPC(string loc)
+    internal cerPPC(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cER PPC";
         this.damage = "5";
         this.heat = 3;
@@ -1047,8 +1119,9 @@ internal class cerPPC : Weapon
 
 internal class cGauss : Weapon
 {
-    internal cGauss(string loc)
+    internal cGauss(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cGauss";
         this.damage = "5";
         this.heat = 0;
@@ -1064,8 +1137,9 @@ internal class cGauss : Weapon
 // cFlamer	     1+H1/1	0/0/-/-/-
 internal class cFlamer : Weapon
 {
-    internal cFlamer(string loc)
+    internal cFlamer(int amount, string loc)
     {
+        this.amount = amount;
         this.displayName = "cFlamer";
         this.damage = "1+H1";
         this.heat = 1;
