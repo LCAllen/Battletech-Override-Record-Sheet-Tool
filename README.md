@@ -1,3 +1,5 @@
+Designed using MegaMekLab 0.49.17 MTF file format. If you are having problems, try updating your MegaMekLab.
+
 WIP:
 - Import from MTF and GUI are complete.
 - Export needs to be completed.
