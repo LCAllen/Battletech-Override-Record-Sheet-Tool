@@ -334,7 +334,7 @@
             // comboBoxWeaponLoc
             // 
             comboBoxWeaponLoc.FormattingEnabled = true;
-            comboBoxWeaponLoc.Items.AddRange(new object[] { "(LA)", "(RA)", "(T)", "(HD)", "(LL)", "(RL)" });
+            comboBoxWeaponLoc.Items.AddRange(new object[] { "(LA)", "(RA)", "(T)", "(HD)", "(LL)", "(RL)", "(LA)(R)", "(RA)(R)", "(T)(R)", "(HD)(R)", "(LL)(R)", "(RL)(R)" });
             comboBoxWeaponLoc.Location = new Point(349, 179);
             comboBoxWeaponLoc.Name = "comboBoxWeaponLoc";
             comboBoxWeaponLoc.Size = new Size(63, 23);
