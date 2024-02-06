@@ -615,10 +615,13 @@ namespace BORST
               new XRect(46, 79, 100, 10),
               XStringFormats.TopLeft);
 
-            // Draw sprint speed
-            tf.DrawString(" / " + Math.Ceiling((double)battleMech.jump).ToString(), detailFont, XBrushes.Black,
-              new XRect(61, 79, 100, 10),
-              XStringFormats.TopLeft);
+            if (battleMech.jump != 0)
+            {
+                // Draw jump speed
+                tf.DrawString(" / " + Math.Ceiling((double)battleMech.jump).ToString(), detailFont, XBrushes.Black,
+                new XRect(61, 79, 100, 10),
+                 XStringFormats.TopLeft);
+            }
 
             // Calc cooling
             int cooling;
@@ -704,9 +707,9 @@ namespace BORST
                     break;
                 case 7:
                 case 8:
+                case 9:
                     tmmRun = 3;
                     break;
-                case 9:
                 case 10:
                 case 11:
                 case 12:
@@ -755,9 +758,9 @@ namespace BORST
                         break;
                     case 7:
                     case 8:
+                    case 9:
                         tmmJump = 3;
                         break;
-                    case 9:
                     case 10:
                     case 11:
                     case 12:
