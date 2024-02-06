@@ -327,10 +327,15 @@ namespace BORST
                     line = line.Remove(0, 1);
                 }
 
+                // Exit in error case
+                if (line == null) break;
+
+                // Format the weapon string into name and location
                 string weapon = line.Split(',')[0].Replace(",", "").ToLower().Replace(" ", "").Replace("is", "").Replace("clan", "");
                 string location = line.Split(',')[1].Replace(" ", "").ToLower();
                 string locationCode = "";
                 
+                // Calc location
                 switch (location)
                 {
                     case "leftarm":
@@ -358,6 +363,8 @@ namespace BORST
                         locationCode = "(RL)";
                         break;
                 }
+
+                // Figure out what type of weapon it is, then add it
                 switch (weapon)
                 {
                     case "machinegun":
