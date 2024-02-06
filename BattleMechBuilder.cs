@@ -118,6 +118,11 @@ namespace BORST
             for (int i = 0; i < 12; i++)
             {
                 var line = reader.ReadLine();
+                
+                // Quick and dirty fix to break the loop if not all 12 equipment slots are populated
+                if (line == null) break;
+
+                // Prep string for parsing
                 string equip = line.ToLower();
                 string sub = "";
 
