@@ -90,6 +90,7 @@
             buttonBatchLoad = new Button();
             buttonBatchGenerate = new Button();
             textBoxBatchLoad = new TextBox();
+            comboBoxWeaponAmount = new ComboBox();
             SuspendLayout();
             // 
             // buttonGenerate
@@ -313,16 +314,17 @@
             // 
             comboBoxWeapons.FormattingEnabled = true;
             comboBoxWeapons.Items.AddRange(new object[] { "MG", "Flamer", "AC/2", "AC/5", "AC/10", "AC/20", "UAC/2", "UAC/5", "UAC/10", "UAC/20", "LB2-X", "LB5-X", "LB10-X", "LB20-X", "SRM-2", "SRM-4", "SRM-6", "Streak SRM-2", "Streak SRM-4", "Streak SRM-6", "LRM-5", "LRM-10", "LRM-15", "LRM-20", "S Las", "M Las", "L Las", "ER S Las", "ER M Las", "ER L Las", "S Pul Las", "M Pul Las", "L Pul Las", "PPC", "ER PPC", "Gauss Rifle" });
-            comboBoxWeapons.Location = new Point(122, 178);
+            comboBoxWeapons.Location = new Point(165, 178);
             comboBoxWeapons.Name = "comboBoxWeapons";
-            comboBoxWeapons.Size = new Size(221, 23);
+            comboBoxWeapons.Size = new Size(178, 23);
             comboBoxWeapons.TabIndex = 26;
+            comboBoxWeapons.Text = "MG";
             comboBoxWeapons.SelectedIndexChanged += comboBoxWeapons_SelectedIndexChanged;
             // 
             // comboBoxEquipment
             // 
             comboBoxEquipment.FormattingEnabled = true;
-            comboBoxEquipment.Items.AddRange(new object[] { "Ammo", "CASE", "CASE II", "AMS", "TAG", "NARC", "TSM", "MASC", "Supercharger", "AES", "Partial Wing", "Targeting Computer", "AES", "Partial Wing", "Targeting Computer", "PPC Capacitor", "Electronic Warfare Equipment", "Artemis IV" });
+            comboBoxEquipment.Items.AddRange(new object[] { "Ammo", "CASE", "CASE II", "AMS", "TAG", "NARC", "TSM", "MASC", "Supercharger", "AES", "Partial Wing", "Targeting Computer", "AES", "Partial Wing", "Targeting Computer", "PPC Capacitor", "Electronic Warfare Equipment", "Artemis IV", "C3M", "C3S" });
             comboBoxEquipment.Location = new Point(122, 442);
             comboBoxEquipment.Name = "comboBoxEquipment";
             comboBoxEquipment.Size = new Size(221, 23);
@@ -337,6 +339,7 @@
             comboBoxWeaponLoc.Name = "comboBoxWeaponLoc";
             comboBoxWeaponLoc.Size = new Size(63, 23);
             comboBoxWeaponLoc.TabIndex = 28;
+            comboBoxWeaponLoc.Text = "(LA)";
             // 
             // comboBoxEquipLoc
             // 
@@ -635,11 +638,22 @@
             textBoxBatchLoad.Text = "Browse for Folder Containing MegaMek MTF";
             textBoxBatchLoad.TextAlign = HorizontalAlignment.Center;
             // 
+            // comboBoxWeaponAmount
+            // 
+            comboBoxWeaponAmount.FormattingEnabled = true;
+            comboBoxWeaponAmount.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" });
+            comboBoxWeaponAmount.Location = new Point(122, 178);
+            comboBoxWeaponAmount.Name = "comboBoxWeaponAmount";
+            comboBoxWeaponAmount.Size = new Size(37, 23);
+            comboBoxWeaponAmount.TabIndex = 64;
+            comboBoxWeaponAmount.Text = "1";
+            // 
             // mainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1060, 710);
+            Controls.Add(comboBoxWeaponAmount);
             Controls.Add(textBoxBatchLoad);
             Controls.Add(buttonBatchGenerate);
             Controls.Add(buttonBatchLoad);
@@ -774,5 +788,6 @@
         private Button buttonBatchLoad;
         private Button buttonBatchGenerate;
         private TextBox textBoxBatchLoad;
+        private ComboBox comboBoxWeaponAmount;
     }
 }

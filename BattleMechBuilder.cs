@@ -275,6 +275,12 @@ namespace BORST
                     case string type when type.Contains("artemisiv"):
                         battleMech.equip.Add(new FCS(location, ""));
                         break;
+                    case string type when type.Contains("C3M"):
+                        battleMech.equip.Add(new C3M(location, ""));
+                        break;
+                    case string type when type.Contains("C3S"):
+                        battleMech.equip.Add(new C3S(location, ""));
+                        break;
                     case string type when type.Contains("ecm"):
                         switch (type)
                         {
