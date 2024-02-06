@@ -44,6 +44,29 @@ namespace BORST
                             if (line.ToLower().StartsWith("mass:"))
                                 battleMech.mass = int.Parse(line.Split(':')[1]);
 
+                            if (line.ToLower().StartsWith("engine:"))
+                            {
+                                if (line.Split(':')[1].Contains("XL"))
+                                {
+                                    if (battleMech.techBase == "Clan")
+                                        battleMech.equip.Add(new XLEngine("(T)", "Clan"));
+                                    else
+                                        battleMech.equip.Add(new XLEngine("(T)", "Inner Sphere"));
+                                }
+                                if (line.Split(':')[1].Contains("XXL"))
+                                {
+                                    if (battleMech.techBase == "Clan")
+                                        battleMech.equip.Add(new XXLEngine("(T)", "Clan"));
+                                    else
+                                        battleMech.equip.Add(new XXLEngine("(T)", "Inner Sphere"));
+                                }
+                                if (line.Split(':')[1].Contains("Light"))
+                                {
+                                        battleMech.equip.Add(new LEngine("(T)", ""));
+                                }
+
+                            }
+
                             if (line.ToLower().StartsWith("heat sinks:"))
                             {
                                 battleMech.heatSinks = int.Parse(line.Split(':')[1].Split(' ')[0]);
@@ -114,7 +137,11 @@ namespace BORST
 
         private static void ParseAndAddEquipment(BattleMech battleMech, StreamReader reader, string location)
         {
-            
+            if(battleMech.techBase == "Clan" && battleMech.omnimech == true)
+            {
+                battleMech.equip.Add(new CASE("(T)", ""));
+            }
+
             for (int i = 0; i < 12; i++)
             {
                 var line = reader.ReadLine();

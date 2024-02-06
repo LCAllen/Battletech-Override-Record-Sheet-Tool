@@ -437,6 +437,36 @@ internal class C3S : Equipment
     }
 }
 
+internal class XLEngine : Equipment
+{
+    internal XLEngine(string loc, string subtype)
+    {
+        this.displayName = "XL Engine";
+        this.location = loc;
+        this.subtype = subtype;
+    }
+}
+
+internal class XXLEngine : Equipment
+{
+    internal XXLEngine(string loc, string subtype)
+    {
+        this.displayName = "XXL Engine";
+        this.location = loc;
+        this.subtype = subtype;
+    }
+}
+
+internal class LEngine : Equipment
+{
+    internal LEngine(string loc, string subtype)
+    {
+        this.displayName = "Light Engine";
+        this.location = loc;
+        this.subtype = subtype;
+    }
+}
+
 // missing BMM equipment: Full-Head Ejection System, Machine Gun Array, OS Missile Launcher
 // missing ASC equipment: various non-mech, ARS, BAR, BHJ, SHLD, MAS, ABA, DN, ES, SEAL, IRA, etc.
 
