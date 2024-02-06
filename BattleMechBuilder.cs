@@ -47,7 +47,7 @@ namespace BORST
                             if (line.ToLower().StartsWith("heat sinks:"))
                             {
                                 battleMech.heatSinks = int.Parse(line.Split(':')[1].Split(' ')[0]);
-                                if (line.Split(':')[1].Split(' ')[1] == "Double") battleMech.doubleHeatSinks = true;
+                                if (line.ToLower().Contains("double")) battleMech.doubleHeatSinks = true;
                             }
 
                             if (line.ToLower().StartsWith("walk mp:"))
@@ -613,6 +613,11 @@ namespace BORST
             // Draw sprint speed
             tf.DrawString(" / " + Math.Ceiling(battleMech.walk * 1.5).ToString(), detailFont, XBrushes.Black,
               new XRect(46, 79, 100, 10),
+              XStringFormats.TopLeft);
+
+            // Draw sprint speed
+            tf.DrawString(" / " + Math.Ceiling((double)battleMech.jump).ToString(), detailFont, XBrushes.Black,
+              new XRect(61, 79, 100, 10),
               XStringFormats.TopLeft);
 
             // Calc cooling
