@@ -142,6 +142,30 @@ namespace BORST
                 battleMech.equip.Add(new CASE("(T)", ""));
             }
 
+            switch(battleMech.armorType)
+            {
+                case string type when type.ToLower().Contains("stealth"):
+                    battleMech.equip.Add(new StealthArmor("(T)",""));
+                    break;
+                case string type when type.ToLower().Contains("reflective"):
+                    battleMech.equip.Add(new ReflectiveArmor("(T)", ""));
+                    break;
+                case string type when type.ToLower().Contains("reactive"):
+                    battleMech.equip.Add(new ReactiveArmor("(T)", ""));
+                    break;
+                case string type when type.ToLower().Contains("hardened"):
+                    battleMech.equip.Add(new HardenedArmor("(T)", ""));
+                    break;
+                case string type when type.ToLower().Contains("ferro-Lamellor"):
+                    battleMech.equip.Add(new FerroLamellorArmor("(T)", ""));
+                    break;
+                case string type when type.ToLower().Contains("reinforced"):
+                    battleMech.equip.Add(new BallisticReinforcedArmor("(T)", ""));
+                    break;
+                default:
+                    break;
+            }
+
             for (int i = 0; i < 12; i++)
             {
                 var line = reader.ReadLine();
